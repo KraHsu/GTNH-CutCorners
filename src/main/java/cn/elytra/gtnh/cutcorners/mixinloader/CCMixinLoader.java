@@ -15,6 +15,8 @@ public class CCMixinLoader implements ILateMixinLoader {
         if (Mods.GregTech.isLoaded()) {
             mixins.add("gregtech.MTEBasicMachineMixin");
             mixins.add("gregtech.MTEMultiBlockBaseMixin");
+            mixins.add("gregtech.MTEBrickedBlastFurnaceMixin");
+            mixins.add("gregtech.MTECokeOvenMixin");
             mixins.add("gregtech.MTEPurificationPlantMixin");
             mixins.add("tectech.MTEResearchStationMixin");
         }

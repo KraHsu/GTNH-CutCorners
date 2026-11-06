@@ -1,0 +1,276 @@
+{
+  "gregtech_version": "5.09.54.265",
+  "scope": "Bytecode inspection of classes containing onPostTick + mProgresstime + mMaxProgresstime. Direct writes are inspection candidates, not proof of missing acceleration. Delegated helper loops require separate inspection.",
+  "fixed": [
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "reason": "Directly extends MetaTileEntity and increments progress inside onPostTick."
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "reason": "Uses private checkRecipeProgress instead of common incrementProgressTime."
+    }
+  ],
+  "candidates": [
+    {
+      "class": "bartworks.common.tileentities.debug.MTECreativeScanner",
+      "inheritance": "public class bartworks.common.tileentities.debug.MTECreativeScanner extends gregtech.common.tileentities.machines.basic.MTEScanner {",
+      "tick_progress_writes": [
+        "5: putfield      #92                 // Field mProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "bartworks.common.tileentities.multis.MTELESU",
+      "inheritance": "public class bartworks.common.tileentities.multis.MTELESU extends gregtech.api.metatileentity.implementations.MTEMultiBlockBase {",
+      "tick_progress_writes": [
+        "11: putfield      #406                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "bartworks.common.tileentities.multis.MTEManualTrafo",
+      "inheritance": "public class bartworks.common.tileentities.multis.MTEManualTrafo extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<bartworks.common.tileentities.multis.MTEManualTrafo>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "bartworks.common.tileentities.multis.MTEThoriumHighTempReactor",
+      "inheritance": "public class bartworks.common.tileentities.multis.MTEThoriumHighTempReactor extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<bartworks.common.tileentities.multis.MTEThoriumHighTempReactor>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "bartworks.common.tileentities.multis.MTEWindmill",
+      "inheritance": "public class bartworks.common.tileentities.multis.MTEWindmill extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<bartworks.common.tileentities.multis.MTEWindmill>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "goodgenerator.blocks.tileEntity.AntimatterForge",
+      "inheritance": "public class goodgenerator.blocks.tileEntity.AntimatterForge extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<goodgenerator.blocks.tileEntity.AntimatterForge>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "goodgenerator.blocks.tileEntity.MTENeutronActivator",
+      "inheritance": "public class goodgenerator.blocks.tileEntity.MTENeutronActivator extends tectech.thing.metaTileEntity.multi.base.TTMultiblockBase",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "goodgenerator.blocks.tileEntity.base.MTELargeFusionComputer",
+      "inheritance": "public abstract class goodgenerator.blocks.tileEntity.base.MTELargeFusionComputer extends tectech.thing.metaTileEntity.multi.base.TTMultiblockBase",
+      "tick_progress_writes": [
+        "323: putfield      #577                // Field mProgresstime:I",
+        "444: putfield      #577                // Field mProgresstime:I",
+        "449: putfield      #520                // Field mMaxProgresstime:I",
+        "609: putfield      #520                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.api.metatileentity.implementations.MTEBasicMachine",
+      "inheritance": "public abstract class gregtech.api.metatileentity.implementations.MTEBasicMachine extends gregtech.api.metatileentity.implementations.MTEBasicTank",
+      "tick_progress_writes": [
+        "164: putfield      #147                // Field mProgresstime:I",
+        "329: putfield      #147                // Field mProgresstime:I",
+        "334: putfield      #149                // Field mMaxProgresstime:I",
+        "386: putfield      #147                // Field mProgresstime:I",
+        "960: putfield      #149                // Field mMaxProgresstime:I",
+        "982: putfield      #149                // Field mMaxProgresstime:I",
+        "997: putfield      #149                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.api.metatileentity.implementations.MTEMultiBlockBase",
+      "inheritance": "public abstract class gregtech.api.metatileentity.implementations.MTEMultiBlockBase extends gregtech.api.metatileentity.MetaTileEntity",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.basic.MTEIndustrialApiary",
+      "inheritance": "public class gregtech.common.tileentities.machines.basic.MTEIndustrialApiary extends gregtech.api.metatileentity.implementations.MTEBasicMachine",
+      "tick_progress_writes": [
+        "348: putfield      #779                // Field mProgresstime:I",
+        "457: putfield      #779                // Field mProgresstime:I",
+        "884: putfield      #779                // Field mProgresstime:I",
+        "889: putfield      #766                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.basic.MTEMiner",
+      "inheritance": "public class gregtech.common.tileentities.machines.basic.MTEMiner extends gregtech.api.metatileentity.implementations.MTEBasicMachine",
+      "tick_progress_writes": [
+        "36: putfield      #292                // Field mMaxProgresstime:I",
+        "66: putfield      #292                // Field mMaxProgresstime:I",
+        "118: putfield      #292                // Field mMaxProgresstime:I",
+        "187: putfield      #292                // Field mMaxProgresstime:I",
+        "196: putfield      #292                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.basic.MTEPump",
+      "inheritance": "public class gregtech.common.tileentities.machines.basic.MTEPump extends gregtech.api.metatileentity.implementations.MTEBasicMachine {",
+      "tick_progress_writes": [
+        "172: putfield      #554                // Field mProgresstime:I",
+        "932: putfield      #557                // Field mMaxProgresstime:I",
+        "937: putfield      #554                // Field mProgresstime:I",
+        "973: putfield      #557                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.basic.MTEScanner",
+      "inheritance": "public class gregtech.common.tileentities.machines.basic.MTEScanner extends gregtech.api.metatileentity.implementations.MTEBasicMachine {",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEAirFilterBase",
+      "inheritance": "public abstract class gregtech.common.tileentities.machines.multi.MTEAirFilterBase extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<gregtech.common.tileentities.machines.multi.MTEAirFilterBase>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace extends gregtech.api.metatileentity.MetaTileEntity",
+      "tick_progress_writes": [
+        "254: putfield      #83                 // Field mProgresstime:I",
+        "275: putfield      #83                 // Field mProgresstime:I",
+        "280: putfield      #79                 // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.MTECokeOven extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<gregtech.common.tileentities.machines.multi.MTECokeOven>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECryogenicFreezer",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.MTECryogenicFreezer extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<gregtech.common.tileentities.machines.multi.MTECryogenicFreezer>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer",
+      "inheritance": "public abstract class gregtech.common.tileentities.machines.multi.MTEFusionComputer extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<gregtech.common.tileentities.machines.multi.MTEFusionComputer>",
+      "tick_progress_writes": [
+        "302: putfield      #548                // Field mProgresstime:I",
+        "386: putfield      #548                // Field mProgresstime:I",
+        "391: putfield      #534                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTELargeBoiler",
+      "inheritance": "public abstract class gregtech.common.tileentities.machines.multi.MTELargeBoiler extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<gregtech.common.tileentities.machines.multi.MTELargeBoiler>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTELargeBoilerBase",
+      "inheritance": "public abstract class gregtech.common.tileentities.machines.multi.MTELargeBoilerBase extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<gregtech.common.tileentities.machines.multi.MTELargeBoilerBase>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTELargeNeutralizationEngine",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.MTELargeNeutralizationEngine extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<gregtech.common.tileentities.machines.multi.MTELargeNeutralizationEngine>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEResearchCompleter",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.MTEResearchCompleter extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<gregtech.common.tileentities.machines.multi.MTEResearchCompleter>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.drone.MTEDroneCentre",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.drone.MTEDroneCentre extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<gregtech.common.tileentities.machines.multi.drone.MTEDroneCentre>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.pcb.MTEPCBFactory",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.pcb.MTEPCBFactory extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<gregtech.common.tileentities.machines.multi.pcb.MTEPCBFactory>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.pcb.MTEPCBUpgradeBase",
+      "inheritance": "public abstract class gregtech.common.tileentities.machines.multi.pcb.MTEPCBUpgradeBase<T extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<T>> extends gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase<T> {",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.purification.MTEPurificationPlant",
+      "inheritance": "public class gregtech.common.tileentities.machines.multi.purification.MTEPurificationPlant extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<gregtech.common.tileentities.machines.multi.purification.MTEPurificationPlant>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitBase",
+      "inheritance": "public abstract class gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitBase<T extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<T>> extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<T> {",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchFluidGenerator",
+      "inheritance": "public abstract class gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchFluidGenerator extends gregtech.api.metatileentity.implementations.MTEHatchInput {",
+      "tick_progress_writes": [
+        "18: putfield      #21                 // Field mProgresstime:I",
+        "23: putfield      #23                 // Field mMaxProgresstime:I",
+        "41: putfield      #23                 // Field mMaxProgresstime:I",
+        "52: putfield      #21                 // Field mProgresstime:I",
+        "75: putfield      #21                 // Field mProgresstime:I"
+      ],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialVacuumFreezerLegacy",
+      "inheritance": "public class gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialVacuumFreezerLegacy extends gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase<gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialVacuumFreezerLegacy>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvEBF",
+      "inheritance": "public class gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvEBF extends gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase<gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvEBF>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEQuantumForceTransformer",
+      "inheritance": "public class gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEQuantumForceTransformer extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEQuantumForceTransformer>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "kubatech.tileentity.gregtech.multiblock.MTEHighTempGasCooledReactor",
+      "inheritance": "public class kubatech.tileentity.gregtech.multiblock.MTEHighTempGasCooledReactor extends kubatech.api.implementations.KubaTechGTMultiBlockBase<kubatech.tileentity.gregtech.multiblock.MTEHighTempGasCooledReactor>",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    },
+    {
+      "class": "tectech.thing.metaTileEntity.multi.base.TTMultiblockBase",
+      "inheritance": "public abstract class tectech.thing.metaTileEntity.multi.base.TTMultiblockBase extends gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase<tectech.thing.metaTileEntity.multi.base.TTMultiblockBase> {",
+      "tick_progress_writes": [
+        "407: putfield      #944                // Field mProgresstime:I",
+        "412: putfield      #513                // Field mMaxProgresstime:I"
+      ],
+      "calls_common_increment": true
+    },
+    {
+      "class": "tectech.thing.metaTileEntity.multi.godforge.MTEExoticModule",
+      "inheritance": "public class tectech.thing.metaTileEntity.multi.godforge.MTEExoticModule extends tectech.thing.metaTileEntity.multi.godforge.MTEBaseModule {",
+      "tick_progress_writes": [],
+      "calls_common_increment": false
+    }
+  ]
+}

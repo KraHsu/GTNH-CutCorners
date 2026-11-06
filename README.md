@@ -9,6 +9,7 @@ This fork accelerates successful machine processing ticks instead of changing GT
 * Default: 10× processing, world stays at 20 TPS.
 * GT single-block and common multiblock processing advance after the native power check. Inputs, outputs, parallel recipe counts, voltage checks and EU/t are unchanged. A job takes `ceil(native processing ticks / multiplier)`, with a minimum of one real tick. It cannot produce multiple batches in one real tick.
 * **Total EU per batch falls with processing time.** This is faster/cheaper processing, not an energy-conserving overclock. It also is not a 10× CPU/tickrate boost.
+* GT bricked blast furnaces and GT coke ovens have their own progress loops and are integrated from `v1.4.0-runtime.3`; recipes and per-batch solid fuel/input amounts remain unchanged.
 * GT recipe definitions and NEI recipe durations stay original. The machine progress bar advances faster; NEI does not show the effective time.
 * Positive-EU electrical generation is excluded. The research station accelerates actual computation consumption, leaves computation requirements unchanged and retains the native finalization tick; its cosmetic progress clock is excluded. Purification keeps its shared controller/unit clock and shortens the common cycle instead of independently accelerating each unit.
 * Vanilla/EFR/Thaumcraft furnace processing and Railcraft blast/coke ovens have small runtime hooks because they do not all use the GT base classes. Coke ovens retain Railcraft's batched work granularity and visual cooldown; their work interval and step are scaled together.
@@ -27,6 +28,10 @@ GTNH 2.9.0 / GT5 5.09.54.265, headless Java 25: eight unit tests and the isolate
 | Alloy blast smelter, 200-tick staged job | 200 | 40 | 20 |
 | Industrial chisel, 200-tick staged job | 200 | 40 | 20 |
 | Research computation 500 / native step 10 (finalization excluded) | 50 | 10 | 5 |
+| GT bricked blast furnace, native iron + coal recipe | 7200 | 1440 | 720 |
+| GT coke oven, native coal recipe | 1800 | 360 | 180 |
+
+The primitive machines also pass disabled/blacklist, broken structure, missing input, blocked output, in-progress job, one-tick and rounding checks. Coke oven creosote amounts remain exactly 500/1000/1500 mB after consecutive coal jobs. Primitive structure flags are staged; physical structure assembly is not tested.
 
 Three consecutive batches produce exactly three outputs. Unpowered machine checks produce none. The real vanilla furnace cooks a potato in 20 ticks at 10×. Disabled processing returns to 200 ticks; an on-disk reload to 3× gives 67 ticks. All 187,204 loaded GT recipe rows remain identical across runtime multiplier switches. This is not a physical assembly test of every machine or a graphical client test. See [verification details and limits](integration/verified-2.9.0.json).
 

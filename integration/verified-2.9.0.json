@@ -533,5 +533,700 @@
     "cutcorners_accepts_missing_client_mod": true,
     "all_registered_server_checkers_rejected": [],
     "missing_gregtech_still_rejected": true
-  }
+  },
+  "primitiveMachines": [
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 1,
+      "enabled": true,
+      "mode": "normal",
+      "native_recipe_duration": 7200,
+      "effective_duration": 7200,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        7200,
+        7200,
+        7200
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "normal",
+      "native_recipe_duration": 7200,
+      "effective_duration": 7200,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        1440,
+        1440,
+        1440
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 10,
+      "enabled": true,
+      "mode": "normal",
+      "native_recipe_duration": 7200,
+      "effective_duration": 7200,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        720,
+        720,
+        720
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": false,
+      "mode": "disabled",
+      "native_recipe_duration": 7200,
+      "effective_duration": 7200,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        7200,
+        7200,
+        7200
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "broken",
+      "native_recipe_duration": 7200,
+      "effective_duration": 7200,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        10
+      ],
+      "outputs_after_batches": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "blocked",
+      "native_recipe_duration": 7200,
+      "effective_duration": 0,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": false,
+      "ticks_per_batch": [],
+      "outputs_after_batches": [],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "missing-input",
+      "native_recipe_duration": 7200,
+      "effective_duration": 0,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": false,
+      "ticks_per_batch": [],
+      "outputs_after_batches": [],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "in-progress",
+      "native_recipe_duration": 7200,
+      "effective_duration": 7200,
+      "initial_progress": 123,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        1416,
+        1416,
+        1416
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "short",
+      "native_recipe_duration": 7200,
+      "effective_duration": 1,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        1,
+        1,
+        1
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "fractional",
+      "native_recipe_duration": 7200,
+      "effective_duration": 198,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        40,
+        40,
+        40
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+      "map": "gt.recipe.primitiveblastfurnace",
+      "speed": 5,
+      "enabled": true,
+      "mode": "blacklist",
+      "native_recipe_duration": 7200,
+      "effective_duration": 7200,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+      "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        7200,
+        7200,
+        7200
+      ],
+      "outputs_after_batches": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 1,
+      "enabled": true,
+      "mode": "normal",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1800,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        1800,
+        1800,
+        1800
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "normal",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1800,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        360,
+        360,
+        360
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 10,
+      "enabled": true,
+      "mode": "normal",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1800,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        180,
+        180,
+        180
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": false,
+      "mode": "disabled",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1800,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        1800,
+        1800,
+        1800
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "broken",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1800,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        10
+      ],
+      "outputs_after_batches": [
+        [
+          0
+        ]
+      ],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "blocked",
+      "native_recipe_duration": 1800,
+      "effective_duration": 0,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": false,
+      "ticks_per_batch": [],
+      "outputs_after_batches": [],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "missing-input",
+      "native_recipe_duration": 1800,
+      "effective_duration": 0,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": false,
+      "ticks_per_batch": [],
+      "outputs_after_batches": [],
+      "fluid_after_batches": [],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "in-progress",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1800,
+      "initial_progress": 123,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        336,
+        336,
+        336
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "short",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        1,
+        1,
+        1
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "fractional",
+      "native_recipe_duration": 1800,
+      "effective_duration": 198,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        40,
+        40,
+        40
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    },
+    {
+      "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+      "map": "gt.recipe.cokeoven",
+      "speed": 5,
+      "enabled": true,
+      "mode": "blacklist",
+      "native_recipe_duration": 1800,
+      "effective_duration": 1800,
+      "initial_progress": 0,
+      "recipe_inputs": "minecraft:coal:0x1[null]; ",
+      "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+      "accepted": true,
+      "ticks_per_batch": [
+        1800,
+        1800,
+        1800
+      ],
+      "outputs_after_batches": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "fluid_after_batches": [
+        500,
+        1000,
+        1500
+      ],
+      "energy_spent": 0
+    }
+  ],
+  "primitive_test_scope": "Native recipes and output/fluid processing; real BaseMetaTileEntity for bricked furnace, simulated structure-valid flag, no physical multiblock assembly. Recipe start checks are native."
 }

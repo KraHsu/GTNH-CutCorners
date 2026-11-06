@@ -72,7 +72,7 @@ public class NativeChecks {
  public static void run(String output)throws Exception {
   Map<String,Object> report=new LinkedHashMap<String,Object>();
   try { report.put("network",network());report.putAll(snapshot());Files.move(Paths.get("recipes.tsv.gz"),Paths.get("recipes-before.tsv.gz"),StandardCopyOption.REPLACE_EXISTING);
-   report.put("furnace",furnace()); report.put("nativeMachines",machines());report.put("researchStation",research());report.put("diskReload",reload());snapshot();report.put("status","passed"); }
+   report.put("furnace",furnace()); report.put("primitiveMachines",primitiveMachines()); report.put("nativeMachines",machines());report.put("researchStation",research());report.put("diskReload",reload());snapshot();report.put("status","passed"); }
   catch(Throwable error){error.printStackTrace();report.put("status","failed");report.put("error",error.toString());}
   Object gson=c("com.google.gson.Gson").newInstance();String json=(String)gson.getClass().getMethod("toJson",Object.class).invoke(gson,report);Files.write(Paths.get(output),json.getBytes("UTF-8"));
  }
@@ -202,6 +202,91 @@ public class NativeChecks {
   }
   Map<String,Object> r=new LinkedHashMap<String,Object>();r.put("name",name);r.put("class",machine.getClass().getName());r.put("duration",duration);r.put("speed",speed);r.put("enabled",enabled);r.put("powered",power);r.put("ticks_per_batch",tickCounts);r.put("outputs_after_batches",outputCounts);r.put("energy_spent",multi?energy.spent:base.spent);r.put("final_progress",get(machine,"mProgresstime"));return r;
  }
+ static Object copyStack(Object value)throws Exception{return value==null?null:call(value,"copy","func_77946_l",new Class<?>[]{});}
+ static boolean hasOreName(Object stack,String name)throws Exception{
+  Class<?> ore=c("net.minecraftforge.oredict.OreDictionary");
+  for(int id:(int[])ore.getMethod("getOreIDs",c("net.minecraft.item.ItemStack")).invoke(null,stack))if(name.equals(ore.getMethod("getOreName",int.class).invoke(null,id)))return true;
+  return false;
+ }
+ static Map<String,Object> primitiveCase(boolean coke,int speed,boolean enabled,String mode,int override,int initial)throws Exception{
+  Class<?> cfg=c("cn.elytra.gtnh.cutcorners.config.RuntimeConfig");cfg.getField("multiplier").setInt(null,speed);cfg.getField("enabled").setBoolean(null,enabled);
+  String type="gregtech.common.tileentities.machines.multi."+(coke?"MTECokeOven":"MTEBrickedBlastFurnace");
+  Base base=new Base();Object machine=cloneMachine(prototype(type,-1),base);Class<?> clazz=c(type);Object tickBase=base.proxy;
+  if(!coke){
+   Object controller=c("gregtech.api.metatileentity.BaseMetaTileEntity").newInstance();fld(controller.getClass(),"worldObj","field_145850_b").set(controller,base.world);fld(controller.getClass(),"yCoord","field_145848_d").setInt(controller,250);
+   set(controller,"mOwnerUuid",UUID.fromString("00000000-0000-0000-0000-000000000001"));set(controller,"mOwnerName","RuntimeChecks");
+   c("gregtech.api.metatileentity.MetaTileEntity").getMethod("setBaseMetaTileEntity",c("gregtech.api.interfaces.tileentity.IGregTechTileEntity")).invoke(machine,controller);tickBase=controller;
+  }
+  Object map=c("gregtech.api.interfaces.tileentity.RecipeMapWorkable").getMethod("getRecipeMap").invoke(machine);String mapName=(String)get(map,"unlocalizedName");
+  if(mode.equals("blacklist"))cfg.getField("recipeMapBlacklist").set(null,new String[]{mapName});
+  Object recipe=null;
+  for(Object candidate:(Collection<?>)map.getClass().getMethod("getAllRecipes").invoke(map)){
+   Object[] inputs=(Object[])get(candidate,"mInputs"),outputs=(Object[])get(candidate,"mOutputs");
+   if(inputs==null||outputs==null||outputs.length==0||outputs[0]==null||inputs.length>(coke?1:3))continue;
+   if(coke){if(!items(inputs).startsWith("minecraft:coal:0x"))continue;}
+   else if(!hasOreName(outputs[0],"ingotSteel"))continue;
+   recipe=candidate;break;
+  }
+  check(recipe!=null,"No native "+type+" recipe found");
+  Object[] inputs=(Object[])get(recipe,"mInputs"),inventory=(Object[])get(machine,"mInventory");
+  int outputStart=coke?1:3;
+  Method progress=coke?declared(clazz,"checkRecipeProgress",c("gregtech.api.interfaces.tileentity.IGregTechTileEntity")):declared(clazz,"onPostTick",c("gregtech.api.interfaces.tileentity.IGregTechTileEntity"),long.class);
+  Method accept=coke?progress:declared(clazz,"checkRecipe");
+  List<Integer> tickCounts=new ArrayList<Integer>();List<List<Integer>> outputCounts=new ArrayList<List<Integer>>();List<Integer> fluids=new ArrayList<Integer>();
+  int duration=0;int[] outputsExpected=null;int fluidExpected=0;boolean accepted=false;
+  for(int batch=0;batch<3;batch++){
+   set(machine,"mMachine",true);set(machine,"mProgresstime",0);set(machine,"mMaxProgresstime",0);
+   if(!coke)set(machine,"mUpdate",-1000000);
+   for(int i=0;i<(coke?1:3);i++)inventory[i]=i<inputs.length?copyStack(inputs[i]):null;
+   if(mode.equals("missing-input"))for(int i=inputs.length-1;i>=0;i--)if(inventory[i]!=null){inventory[i]=null;break;}
+   if(mode.equals("blocked")){
+    Object dirt=call(registry,"getObject","func_82594_a",new Class<?>[]{String.class},"minecraft:dirt");inventory[outputStart]=c("net.minecraft.item.ItemStack").getConstructor(c("net.minecraft.item.Item"),int.class,int.class).newInstance(dirt,64,0);
+   }
+   String inputBefore=items(Arrays.copyOfRange(inventory,0,coke?1:3));
+   if(coke){base.allowed=true;accept.invoke(machine,base.proxy);base.allowed=false;}
+   else accept.invoke(machine);
+   accepted=((Number)get(machine,"mMaxProgresstime")).intValue()>0;
+   if(mode.equals("blocked")||mode.equals("missing-input")){
+    check(!accepted,type+" accepted blocked/missing input recipe");check(inputBefore.equals(items(Arrays.copyOfRange(inventory,0,coke?1:3))),type+" consumed inputs for rejected recipe");break;
+   }
+   check(accepted,type+" rejected selected native recipe");
+   for(int i=0;i<inputs.length;i++)check(inventory[i]==null||((Number)count.get(inventory[i])).intValue()==0,type+" did not consume exact native inputs");
+   Object[] products=(Object[])get(machine,"mOutputItems");outputsExpected=new int[coke?1:3];for(int i=0;i<outputsExpected.length && i<products.length;i++)if(products[i]!=null)outputsExpected[i]=((Number)count.get(products[i])).intValue();
+   if(coke){Object[] liquid=(Object[])get(machine,"mOutputFluids");fluidExpected=liquid!=null&&liquid.length>0&&liquid[0]!=null?((Number)get(liquid[0],"amount")).intValue():0;}
+   duration=((Number)get(machine,"mMaxProgresstime")).intValue();if(override>0){set(machine,"mMaxProgresstime",override);duration=override;}
+   check(initial<duration,"Invalid staged initial progress");set(machine,"mProgresstime",initial);
+   if(mode.equals("broken"))set(machine,"mMachine",false);
+   int ticks=0;while(((Number)get(machine,"mMaxProgresstime")).intValue()>0 && ticks<duration+200){
+    if(coke)progress.invoke(machine,base.proxy);else {set(machine,"mUpdate",-1000000);progress.invoke(machine,tickBase,201L+ticks);}
+    ticks++;if(mode.equals("broken")&&ticks==10)break;
+   }
+   tickCounts.add(ticks);List<Integer> produced=new ArrayList<Integer>();for(int i=0;i<outputsExpected.length;i++)produced.add(inventory[outputStart+i]==null?0:((Number)count.get(inventory[outputStart+i])).intValue());outputCounts.add(produced);
+   if(mode.equals("broken")){check(((Number)get(machine,"mProgresstime")).intValue()==initial,type+" advanced with broken structure");for(int n:produced)check(n==0,type+" produced with broken structure");break;}
+   int rate=enabled&&!mode.equals("blacklist")?speed:1;int expected=Math.max(1,(duration-initial+rate-1)/rate);check(ticks==expected,type+" ticks="+ticks+" expected="+expected);
+   for(int i=0;i<outputsExpected.length;i++)check(produced.get(i)==outputsExpected[i]*(batch+1),type+" duplicated/missing product in slot "+i);
+   if(coke){Object liquid=get(machine,"fluid");int amount=liquid==null?0:((Number)get(liquid,"amount")).intValue();fluids.add(amount);check(amount==fluidExpected*(batch+1),"Coke fluid output duplicated/missing");}
+  }
+  check(base.spent==0,"Primitive machine unexpectedly consumed EU");
+  if(!coke)check(((Number)get(tickBase,"mStoredEnergy")).longValue()==0,"Bricked furnace changed EU storage");
+  Map<String,Object> result=new LinkedHashMap<String,Object>();result.put("class",type);result.put("map",mapName);result.put("speed",speed);result.put("enabled",enabled);result.put("mode",mode);result.put("native_recipe_duration",get(recipe,"mDuration"));result.put("effective_duration",duration);result.put("initial_progress",initial);result.put("recipe_inputs",items(inputs));result.put("recipe_outputs",items((Object[])get(recipe,"mOutputs")));result.put("accepted",accepted);result.put("ticks_per_batch",tickCounts);result.put("outputs_after_batches",outputCounts);result.put("fluid_after_batches",fluids);result.put("energy_spent",base.spent);return result;
+ }
+ static Object primitiveMachines()throws Exception{
+  Class<?> cfg=c("cn.elytra.gtnh.cutcorners.config.RuntimeConfig");int prior=cfg.getField("multiplier").getInt(null);boolean enabled=cfg.getField("enabled").getBoolean(null);Object blacklist=cfg.getField("recipeMapBlacklist").get(null);
+  List<Map<String,Object>> result=new ArrayList<Map<String,Object>>();
+  try{for(boolean coke:new boolean[]{false,true}){
+   for(int speed:new int[]{1,5,10})result.add(primitiveCase(coke,speed,true,"normal",0,0));
+   result.add(primitiveCase(coke,5,false,"disabled",0,0));
+   result.add(primitiveCase(coke,5,true,"broken",0,0));
+   result.add(primitiveCase(coke,5,true,"blocked",0,0));
+   result.add(primitiveCase(coke,5,true,"missing-input",0,0));
+   result.add(primitiveCase(coke,5,true,"in-progress",0,123));
+   result.add(primitiveCase(coke,5,true,"short",1,0));
+   result.add(primitiveCase(coke,5,true,"fractional",198,0));
+   result.add(primitiveCase(coke,5,true,"blacklist",0,0));
+   cfg.getField("recipeMapBlacklist").set(null,blacklist);
+  }return result;}finally{cfg.getField("multiplier").setInt(null,prior);cfg.getField("enabled").setBoolean(null,enabled);cfg.getField("recipeMapBlacklist").set(null,blacklist);}
+ }
+
  static Object research()throws Exception{
   Class<?> cfg=c("cn.elytra.gtnh.cutcorners.config.RuntimeConfig");int prior=cfg.getField("multiplier").getInt(null);
   List<Map<String,Object>> results=new ArrayList<Map<String,Object>>();

@@ -5,6 +5,7 @@ import gregtech.api.metatileentity.implementations.MTEBasicMachine;
 import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
 import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
 import gregtech.api.recipe.RecipeMap;
+import gregtech.api.interfaces.tileentity.RecipeMapWorkable;
 import gregtech.common.tileentities.machines.multi.purification.MTEPurificationPlant;
 import gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitBase;
 import tectech.thing.metaTileEntity.multi.MTEResearchStation;
@@ -30,6 +31,8 @@ public final class RuntimeProgress {
             if (multi.mEUt > 0) return 1;
             if (machine instanceof MTEExtendedPowerMultiBlockBase && ((MTEExtendedPowerMultiBlockBase<?>) machine).lEUt > 0) return 1;
             map = multi.getRecipeMap();
+        } else if (machine instanceof RecipeMapWorkable) {
+            map = ((RecipeMapWorkable) machine).getRecipeMap();
         }
         if (map != null && RuntimeConfig.recipeMapBlacklist != null) {
             for (String excluded : RuntimeConfig.recipeMapBlacklist) if (map.unlocalizedName.equals(excluded)) return 1;
