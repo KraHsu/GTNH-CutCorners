@@ -1,8 +1,5 @@
 package cn.elytra.gtnh.cutcorners.mixins.late.thaumcraft;
 
-import cn.elytra.gtnh.cutcorners.mixinloader.DevelopmentEnvironmentTester;
-import me.fallenbreath.conditionalmixin.api.annotation.Condition;
-import me.fallenbreath.conditionalmixin.api.annotation.Restriction;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,9 +12,6 @@ import thaumcraft.api.crafting.ShapedArcaneRecipe;
 /// TC throws exception when the recipe has something missing in dev.
 /// This mixin replaces the null slots to sticks, so that the game won't be fucked.
 @Mixin(value = ShapedArcaneRecipe.class, remap = false)
-@Restriction(
-    require = @Condition(type = Condition.Type.TESTER, tester = DevelopmentEnvironmentTester.class)
-)
 public class ShapedArcaneRecipeNullFix {
 
     @Inject(method = "<init>(Ljava/lang/String;Lnet/minecraft/item/ItemStack;Lthaumcraft/api/aspects/AspectList;[Ljava/lang/Object;)V", at = @At("HEAD"))

@@ -5,13 +5,10 @@ import cn.elytra.gtnh.cutcorners.util.ModConst;
 import com.gtnewhorizon.cropsnh.handler.ConfigurationHandler;
 import com.gtnewhorizon.cropsnh.tileentity.multi.MTEIndustrialFarm;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import me.fallenbreath.conditionalmixin.api.annotation.Condition;
-import me.fallenbreath.conditionalmixin.api.annotation.Restriction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = MTEIndustrialFarm.class, remap = false)
-@Restriction(require = @Condition(ModConst.ModId.CropsNH))
 public class MTEIndustrialFarmMixin {
 
     @ModifyReturnValue(method = "getGrowthProgressPerCycle", at = @At("RETURN"))

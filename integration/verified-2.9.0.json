@@ -9,7 +9,7 @@
   "recipe_snapshot": {
     "count": 187204,
     "changed_during_runtime_switches": 0,
-    "scope": "Same loaded registry before/after 1x, 10x, 1000x, disabled and on-disk 3x reload; full recipe rows including duration/EUt/inputs/outputs unchanged."
+    "scope": "Same loaded registry before/after 1x, 5x, 10x, disabled and on-disk 3x reload; full recipe rows including duration/EUt/inputs/outputs unchanged."
   },
   "furnace": {
     "input": "minecraft:potato:32767x1[null]; ",
@@ -39,6 +39,26 @@
         3
       ],
       "energy_spent": 1200,
+      "final_progress": 0
+    },
+    {
+      "name": "LV macerator",
+      "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+      "duration": 200,
+      "speed": 5,
+      "enabled": true,
+      "powered": true,
+      "ticks_per_batch": [
+        40,
+        40,
+        40
+      ],
+      "outputs_after_batches": [
+        1,
+        2,
+        3
+      ],
+      "energy_spent": 240,
       "final_progress": 0
     },
     {
@@ -161,6 +181,26 @@
       "name": "industrialcentrifuge",
       "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialCentrifugeLegacy",
       "duration": 200,
+      "speed": 5,
+      "enabled": true,
+      "powered": true,
+      "ticks_per_batch": [
+        40,
+        40,
+        40
+      ],
+      "outputs_after_batches": [
+        1,
+        2,
+        3
+      ],
+      "energy_spent": 240,
+      "final_progress": 0
+    },
+    {
+      "name": "industrialcentrifuge",
+      "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialCentrifugeLegacy",
+      "duration": 200,
       "speed": 10,
       "enabled": true,
       "powered": true,
@@ -211,6 +251,26 @@
         3
       ],
       "energy_spent": 1200,
+      "final_progress": 0
+    },
+    {
+      "name": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+      "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+      "duration": 200,
+      "speed": 5,
+      "enabled": true,
+      "powered": true,
+      "ticks_per_batch": [
+        40,
+        40,
+        40
+      ],
+      "outputs_after_batches": [
+        1,
+        2,
+        3
+      ],
+      "energy_spent": 240,
       "final_progress": 0
     },
     {
@@ -273,6 +333,26 @@
       "name": "alloyblastsmelter",
       "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEAlloyBlastSmelter",
       "duration": 200,
+      "speed": 5,
+      "enabled": true,
+      "powered": true,
+      "ticks_per_batch": [
+        40,
+        40,
+        40
+      ],
+      "outputs_after_batches": [
+        1,
+        2,
+        3
+      ],
+      "energy_spent": 240,
+      "final_progress": 0
+    },
+    {
+      "name": "alloyblastsmelter",
+      "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEAlloyBlastSmelter",
+      "duration": 200,
       "speed": 10,
       "enabled": true,
       "powered": true,
@@ -329,6 +409,26 @@
       "name": "industrialchisel",
       "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialChisel",
       "duration": 200,
+      "speed": 5,
+      "enabled": true,
+      "powered": true,
+      "ticks_per_batch": [
+        40,
+        40,
+        40
+      ],
+      "outputs_after_batches": [
+        1,
+        2,
+        3
+      ],
+      "energy_spent": 240,
+      "final_progress": 0
+    },
+    {
+      "name": "industrialchisel",
+      "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialChisel",
+      "duration": 200,
       "speed": 10,
       "enabled": true,
       "powered": true,
@@ -370,6 +470,14 @@
       "powered_work_ticks": 50,
       "remaining": 0,
       "energy_spent": 100
+    },
+    {
+      "speed": 5,
+      "computation": 500,
+      "native_step": 10,
+      "powered_work_ticks": 10,
+      "remaining": 0,
+      "energy_spent": 20
     },
     {
       "speed": 10,
@@ -414,5 +522,16 @@
     "Research station uses real BaseMetaTileEntity storage; powered computation and progress exclusion tested, retaining native finalization tick.",
     "No physical assembly/structure check of every multiblock. Railcraft/Thaumcraft/EFR/purification hooks load with the pack; full processing not exercised here.",
     "Not deployed to production."
-  ]
+  ],
+  "network": {
+    "conditional_mixin_absent_from_server": true,
+    "client_omits": [
+      "CutCorners",
+      "conditional_mixin",
+      "runtimecompatchecks"
+    ],
+    "cutcorners_accepts_missing_client_mod": true,
+    "all_registered_server_checkers_rejected": [],
+    "missing_gregtech_still_rejected": true
+  }
 }

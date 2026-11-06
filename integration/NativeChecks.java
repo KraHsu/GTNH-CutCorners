@@ -71,11 +71,33 @@ public class NativeChecks {
 
  public static void run(String output)throws Exception {
   Map<String,Object> report=new LinkedHashMap<String,Object>();
-  try { report.putAll(snapshot());Files.move(Paths.get("recipes.tsv.gz"),Paths.get("recipes-before.tsv.gz"),StandardCopyOption.REPLACE_EXISTING);
+  try { report.put("network",network());report.putAll(snapshot());Files.move(Paths.get("recipes.tsv.gz"),Paths.get("recipes-before.tsv.gz"),StandardCopyOption.REPLACE_EXISTING);
    report.put("furnace",furnace()); report.put("nativeMachines",machines());report.put("researchStation",research());report.put("diskReload",reload());snapshot();report.put("status","passed"); }
   catch(Throwable error){error.printStackTrace();report.put("status","failed");report.put("error",error.toString());}
   Object gson=c("com.google.gson.Gson").newInstance();String json=(String)gson.getClass().getMethod("toJson",Object.class).invoke(gson,report);Files.write(Paths.get(output),json.getBytes("UTF-8"));
  }
+ static Object network()throws Exception {
+  Class<?> registryType=c("cpw.mods.fml.common.network.NetworkRegistry"),containerType=c("cpw.mods.fml.common.ModContainer"),holderType=c("cpw.mods.fml.common.network.internal.NetworkModHolder"),sideType=c("cpw.mods.fml.relauncher.Side");
+  Object registry=get(registryType,"INSTANCE"),side=get(sideType,"CLIENT");
+  Map<?,?> holders=(Map<?,?>)registryType.getMethod("registry").invoke(registry);
+  Map<String,String> client=new TreeMap<String,String>();Map<String,Object> byId=new HashMap<String,Object>();
+  for(Map.Entry<?,?> entry:holders.entrySet()){
+   String id=(String)containerType.getMethod("getModId").invoke(entry.getKey());String version=(String)containerType.getMethod("getVersion").invoke(entry.getKey());
+   client.put(id,version);byId.put(id,entry.getValue());
+  }
+  boolean noDependency=!client.containsKey("conditional_mixin");
+  client.remove("CutCorners");client.remove("conditional_mixin");client.remove("runtimecompatchecks");
+  Method checkRemote=holderType.getMethod("check",Map.class,sideType);
+  List<String> rejected=new ArrayList<String>();
+  for(Map.Entry<String,Object> entry:byId.entrySet())if(!(Boolean)checkRemote.invoke(entry.getValue(),client,side))rejected.add(entry.getKey());
+  boolean cutCornersAccepted=(Boolean)checkRemote.invoke(byId.get("CutCorners"),client,side);
+  Map<String,String> missingRequired=new TreeMap<String,String>(client);missingRequired.remove("gregtech");
+  boolean requiredRejected=!(Boolean)checkRemote.invoke(byId.get("gregtech"),missingRequired,side);
+  Map<String,Object> result=new LinkedHashMap<String,Object>();result.put("conditional_mixin_absent_from_server",noDependency);result.put("client_omits",Arrays.asList("CutCorners","conditional_mixin","runtimecompatchecks"));result.put("cutcorners_accepts_missing_client_mod",cutCornersAccepted);result.put("all_registered_server_checkers_rejected",rejected);result.put("missing_gregtech_still_rejected",requiredRejected);
+  check(noDependency,"External dependency unexpectedly loaded");check(cutCornersAccepted && rejected.isEmpty(),"Clean client rejected by "+rejected);check(requiredRejected,"Required GregTech network check bypassed");
+  return result;
+ }
+
  static void set(Object target,String field,Object value)throws Exception{fld(target.getClass(),field).set(target,value);}
  static Method declared(Class<?> type,String name,Class<?>...args)throws Exception{
   for(Class<?> k=type;k!=null;k=k.getSuperclass())try{Method m=k.getDeclaredMethod(name,args);m.setAccessible(true);return m;}catch(NoSuchMethodException ignored){}
@@ -183,7 +205,7 @@ public class NativeChecks {
  static Object research()throws Exception{
   Class<?> cfg=c("cn.elytra.gtnh.cutcorners.config.RuntimeConfig");int prior=cfg.getField("multiplier").getInt(null);
   List<Map<String,Object>> results=new ArrayList<Map<String,Object>>();
-  try{for(int speed:new int[]{1,10,1000}){
+  try{for(int speed:new int[]{1,5,10,1000}){
    cfg.getField("multiplier").setInt(null,speed);Base base=new Base();
    Object controller=c("gregtech.api.metatileentity.BaseMetaTileEntity").newInstance();
    fld(controller.getClass(),"worldObj","field_145850_b").set(controller,base.world);
@@ -218,13 +240,13 @@ public class NativeChecks {
   List<Map<String,Object>> results=new ArrayList<Map<String,Object>>();
   try{
    Object basic=prototype("macerator",1);
-   for(int speed:new int[]{1,10})results.add(machineCase("LV macerator",basic,200,speed,true,true,false));
+   for(int speed:new int[]{1,5,10})results.add(machineCase("LV macerator",basic,200,speed,true,true,false));
    results.add(machineCase("LV short recipe",basic,1,10,true,true,false));
    results.add(machineCase("LV fractional tick boundary",basic,198,10,true,true,false));
    results.add(machineCase("LV disabled",basic,200,10,false,true,false));
    results.add(machineCase("LV power failure",basic,200,10,true,false,false));
    for(String name:new String[]{"industrialcentrifuge","gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge","alloyblastsmelter","industrialchisel"}){
-    Object proto=prototype(name,-1);results.add(machineCase(name,proto,200,1,true,true,true));results.add(machineCase(name,proto,200,10,true,true,true));results.add(machineCase(name+" power failure",proto,200,10,true,false,true));
+    Object proto=prototype(name,-1);results.add(machineCase(name,proto,200,1,true,true,true));results.add(machineCase(name,proto,200,5,true,true,true));results.add(machineCase(name,proto,200,10,true,true,true));results.add(machineCase(name+" power failure",proto,200,10,true,false,true));
    }
    return results;
   }finally{cfg.getField("multiplier").setInt(null,prior);cfg.getField("enabled").setBoolean(null,enabled);}

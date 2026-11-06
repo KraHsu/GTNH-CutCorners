@@ -18,21 +18,21 @@ Machines with completely independent processing loops need a shared-loop integra
 
 ## Verified locally
 
-GTNH 2.9.0 / GT5 5.09.54.265, headless Java 25: eight unit tests and the isolated native processing checks pass.
+GTNH 2.9.0 / GT5 5.09.54.265, headless Java 25: eight unit tests and the isolated native processing checks pass. Forge accepts a client mod map without CutCorners or `conditional_mixin`, while still rejecting a map missing required GregTech. The server starts without `conditional_mixin` installed; no classes in the built jar reference that library.
 
-| Check | 1× | 10× |
-| --- | ---: | ---: |
-| LV macerator, 200-tick staged job | 200 | 20 |
-| Industrial centrifuge (current and legacy), 200-tick staged job | 200 | 20 |
-| Alloy blast smelter, 200-tick staged job | 200 | 20 |
-| Industrial chisel, 200-tick staged job | 200 | 20 |
-| Research computation 500 / native step 10 (finalization excluded) | 50 | 5 |
+| Check | 1× | 5× | 10× |
+| --- | ---: | ---: | ---: |
+| LV macerator, 200-tick staged job | 200 | 40 | 20 |
+| Industrial centrifuge (current and legacy), 200-tick staged job | 200 | 40 | 20 |
+| Alloy blast smelter, 200-tick staged job | 200 | 40 | 20 |
+| Industrial chisel, 200-tick staged job | 200 | 40 | 20 |
+| Research computation 500 / native step 10 (finalization excluded) | 50 | 10 | 5 |
 
 Three consecutive batches produce exactly three outputs. Unpowered machine checks produce none. The real vanilla furnace cooks a potato in 20 ticks at 10×. Disabled processing returns to 200 ticks; an on-disk reload to 3× gives 67 ticks. All 187,204 loaded GT recipe rows remain identical across runtime multiplier switches. This is not a physical assembly test of every machine or a graphical client test. See [verification details and limits](integration/verified-2.9.0.json).
 
 ## Configuration
 
-Install this jar **instead of** the upstream CutCorners jar, together with `conditional_mixin-1.1.0.jar`. For matching client/server displays, use matching jars on both sides. Back up your world and test your own machines before deploying. The old `CutCorners-1.cfg` is not used.
+Install this jar **instead of** the upstream CutCorners jar. From `v1.4.0-runtime.2`, no external `conditional_mixin` dependency is used. Remove `conditional_mixin-1.1.0.jar` if it was installed only for CutCorners; retain it if another mod independently requires it. **Clients do not need CutCorners or its former dependency to join.** Back up your world and test your own machines before deploying. The old `CutCorners-1.cfg` is not used.
 
 The generated `config/CutCornersRuntime.cfg` contains:
 
@@ -68,13 +68,13 @@ The project uses Java 25 for compilation and the upstream multi-release Java 8/2
 
 ```sh
 python3 integration/run-local.py --template /path/to/GTNH-2.9.0-server \
-  --mod /path/to/built-CutCorners.jar --dependency /path/to/conditional_mixin-1.1.0.jar \
+  --mod /path/to/built-CutCorners.jar \
   --java /path/to/java25/bin/java --work /tmp/cutc-runtime-test
 python3 integration/run-local.py --work /tmp/cutc-runtime-test --request
 # native-results.json, recipes.tsv.gz and server.log are written in that directory
 python3 integration/run-local.py --work /tmp/cutc-runtime-test --stop
 ```
 
-The harness runs real registered GT machine classes and their native processing methods, with isolated power/output base-tile doubles; it does not claim to assemble every multiblock or simulate a player client. It checks consecutive batches at 1×/10×/disabled, short jobs, missing power, and a real vanilla furnace. Helpers can be rebuilt/reloaded in the same test JVM without restarting the pack.
+The harness runs real registered GT machine classes and their native processing methods, with isolated power/output base-tile doubles; it does not claim to assemble every multiblock or simulate a player client. It first checks the real Forge network validators with a client map omitting CutCorners and the former dependency, including a negative control that missing required GregTech is still rejected. It also checks consecutive batches at 1×/10×/disabled, short jobs, missing power, and a real vanilla furnace. Helpers can be rebuilt/reloaded in the same test JVM without restarting the pack.
 
 [Original upstream documentation](UPSTREAM_README.md).

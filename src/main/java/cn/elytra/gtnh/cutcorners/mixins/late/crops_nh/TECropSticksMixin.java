@@ -6,8 +6,6 @@ import com.gtnewhorizon.cropsnh.tileentity.TileEntityCropSticks;
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import me.fallenbreath.conditionalmixin.api.annotation.Condition;
-import me.fallenbreath.conditionalmixin.api.annotation.Restriction;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -18,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import static com.gtnewhorizon.cropsnh.tileentity.TileEntityCropSticks.TICK_RATE;
 
 @Mixin(value = TileEntityCropSticks.class, remap = false)
-@Restriction(require = @Condition(ModConst.ModId.CropsNH))
 public class TECropSticksMixin {
 
     @Unique

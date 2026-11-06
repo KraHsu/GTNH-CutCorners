@@ -16,8 +16,7 @@ import org.apache.logging.log4j.Logger;
     guiFactory = "com.github.wohaopa.GTNHModify.client.gui.GuiFactory",
     acceptedMinecraftVersions = "[1.7.10]",
     acceptableRemoteVersions = "*",
-    dependencies = "required-after:conditional_mixin;"
-        + "required-after:gregtech;"
+    dependencies = "required-after:gregtech;"
         + "required-after:Thaumcraft;"
         + "required-after:tectech;"
         + "required-after:miscutils;"

@@ -54,9 +54,6 @@ dependencies {
     }
     implementation("thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev") { isTransitive = false }
 
-    devOnlyNonPublishable("com.github.ElytraServers:conditional-mixin-legacy:1.1.0") {
-        artifact { classifier = "dev" }
-    }
 }
 
 tasks.test {
