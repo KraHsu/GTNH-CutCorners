@@ -49,6 +49,10 @@ public class CutCorners {
     // called in LoadComplete event
     public static void loadComplete() {
         initialized = true;
+        if (getStrategy() instanceof cn.elytra.gtnh.cutcorners.strate.impl.conf.RuntimeStrategy) {
+            LOG.info("Runtime processing acceleration active; recipe definitions are unchanged.");
+            return;
+        }
         warnModsLoadedAfterCutCorners();
         for (Runnable initializer : INITIALIZERS) {
             try {

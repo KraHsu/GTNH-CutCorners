@@ -3,6 +3,13 @@ plugins {
     id("com.github.ElytraServers.elytra-conventions") version "v1.1.2"
 }
 
+// Reuse an installed JDK without downloading a second vendor's toolchain.
+// Omit -PbuildJvmVendor to retain the upstream vendor selection.
+providers.gradleProperty("buildJvmVendor").orNull?.let { requestedVendor ->
+    java.toolchain.vendor.set(if (requestedVendor.equals("adoptium", ignoreCase = true)) JvmVendorSpec.ADOPTIUM
+        else JvmVendorSpec.matching(requestedVendor))
+}
+
 elytraModpackVersion {
     gtnhVersion = "2.9.0"
     attachManifestVersionToJar = true
@@ -53,5 +60,10 @@ dependencies {
 }
 
 tasks.test {
+    // GTNHGradle 2.0.26's downgraded FileCollection is not a class-root
+    // directory for Gradle 9.4 (silently yields NO-SOURCE). Test native
+    // compiled classes with the project JDK; the isolated pack checks the jar.
+    testClassesDirs = sourceSets.test.get().output.classesDirs
+    classpath = sourceSets.test.get().runtimeClasspath
     useJUnitPlatform()
 }

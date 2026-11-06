@@ -136,40 +136,9 @@ class CutCornersCommand extends CommandBase {
                                 }
                             }
                             if (mte instanceof MTEBasicMachine || mte instanceof MTEMultiBlockBase) {
-                                sc.text("[R.M. Acceleration]").color(EnumChatFormatting.WHITE);
-                                if (CutCornersAPI.isMTEAccelerated(mteClass)) {
-                                    sc.text("Listed").color(EnumChatFormatting.GREEN);
-                                } else {
-                                    sc.text("Not listed. ")
-                                        .color(EnumChatFormatting.RED)
-                                        .appendText("Add")
-                                        .color(EnumChatFormatting.YELLOW)
-                                        .bold(true)
-                                        .underlined(true)
-                                        .clickEventSuggestMessage(
-                                            String.format("/cutcorners runMachineApplied %s", mteClass.getCanonicalName()));
-                                }
+                                sc.textFormatted("[Runtime processing] %sx", cn.elytra.gtnh.cutcorners.runtime.RuntimeProgress.speed());
                             }
                         } while (false);
-                    }
-                } else if (s.equalsIgnoreCase("runMachineApplied")) {
-                    String cfqn = removeFirst(args);
-                    if (cfqn == null) {
-                        sc.text("[Currently]").color(EnumChatFormatting.WHITE).bold(true);
-                        for (Class<?> c : CutCornersAPI.getMTEAccelerated()) {
-                            sc.textFormatted("- %s", c.getCanonicalName()).color(EnumChatFormatting.GRAY).italic(true);
-                        }
-                    } else {
-                        // check first
-                        Class<?> clazz;
-                        try {
-                            clazz = Class.forName(cfqn, false, Thread.currentThread().getContextClassLoader());
-                        } catch (ClassNotFoundException e) {
-                            throw new CommandException("Class %s is not found", cfqn);
-                        }
-
-                        CutCornersAPI.addMTEAccelerated(clazz);
-                        sc.text("Success!").color(EnumChatFormatting.GREEN);
                     }
                 } else if (s.equalsIgnoreCase("reload")) {
                     try {
@@ -188,7 +157,7 @@ class CutCornersCommand extends CommandBase {
 
     private void helpMessage(ICommandSender sender) {
         String[] messages = {"== CutCorners Commands ==", "/cutcorners getMachineInfo [<x> <y> <z> [dim]]",
-            "/cutcorners runMachineApplied <classFullQualifiedName>"};
+            "/cutcorners reload"};
 
         for (String message : messages) {
             sender.addChatMessage(new ChatComponentText(message));

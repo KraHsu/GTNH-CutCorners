@@ -16,7 +16,7 @@ public class CommonProxy {
     }
 
     public void loadComplete(FMLLoadCompleteEvent event) {
-        CutCorners.LOG.info("Cutting and initializing all recipes");
+        CutCorners.LOG.info("Initializing processing strategy");
         CutCorners.loadComplete();
     }
 

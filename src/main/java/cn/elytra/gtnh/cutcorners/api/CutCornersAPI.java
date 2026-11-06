@@ -1,6 +1,7 @@
 package cn.elytra.gtnh.cutcorners.api;
 
 import cn.elytra.gtnh.cutcorners.config.NewConfig;
+import cn.elytra.gtnh.cutcorners.config.RuntimeConfig;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
 import net.minecraft.launchwrapper.Launch;
 import org.apache.commons.lang3.ArrayUtils;
@@ -8,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public final class CutCornersAPI {
-    private static final Class<?> CONFIG_CLASS = NewConfig.class;
+    private static final Class<?> CONFIG_CLASS = RuntimeConfig.class;
     private static final Logger LOG = LogManager.getLogger();
 
     /// the reload id of runtime-reloadable fields.
@@ -20,7 +21,7 @@ public final class CutCornersAPI {
         }
         // initialize everything!
         LOG.info("CutCornersAPI!");
-        NewConfig.init();
+        RuntimeConfig.init();
     }
 
     public static boolean isDev() {
@@ -50,6 +51,6 @@ public final class CutCornersAPI {
     }
 
     public static Class<?>[] getMTEAccelerated() {
-        return NewConfig.MTE_ACCELERATION_CLASS.get().toArray(Class[]::new);
+        return NewConfig.MTE_ACCELERATION_CLASS.get().toArray(new Class<?>[0]);
     }
 }

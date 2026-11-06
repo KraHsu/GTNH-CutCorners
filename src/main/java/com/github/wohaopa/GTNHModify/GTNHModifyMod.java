@@ -1,7 +1,7 @@
 package com.github.wohaopa.GTNHModify;
 
 import cn.elytra.gtnh.cutcorners.CutCorners;
-import cn.elytra.gtnh.cutcorners.strate.impl.conf.NewConfigStrategy;
+import cn.elytra.gtnh.cutcorners.strate.impl.conf.RuntimeStrategy;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -38,7 +38,7 @@ public class GTNHModifyMod {
     public static CommonProxy proxy;
 
     public GTNHModifyMod() {
-        CutCorners.setStrategy(new NewConfigStrategy());
+        CutCorners.setStrategy(new RuntimeStrategy());
     }
 
     @Mod.EventHandler

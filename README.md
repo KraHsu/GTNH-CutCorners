@@ -1,22 +1,80 @@
-# GTNH-CutCorners
+# CutCorners Runtime — GTNH 2.9.0
 
-![](https://img.shields.io/badge/QQ%E7%BE%A4-639927833-blue)
+Fork of [ElytraServers/GTNH-CutCorners](https://github.com/ElytraServers/GTNH-CutCorners/tree/version/2.9), based on v1.3.30 (`c615976`). Upstream authors and MIT license are retained.
 
-Requires [Conditional Mixin Legacy](https://github.com/ElytraServers/conditional-mixin-legacy/releases) since v1.3.12.
-从 v1.3.12 开始需要同时安装 [Conditional Mixin Legacy](https://github.com/ElytraServers/conditional-mixin-legacy/releases)。
+This fork accelerates successful machine processing ticks instead of changing GT recipe registrations. Derived recipes keep their original durations, eliminating repeated scaling during recipe copying. The industrial chisel is covered through the common multiblock processing loop even though it chooses its processing time at runtime.
 
-**Cut Corners** means *to do something in the easiest and shortest way, esp at the expense of high standards.*\
-**Cut Corners** 意思是 *用最简单最省事的方式做事，尤其是以牺牲高标准为代价。*
+## Behavior
 
-GTNH-CutCorners (or GTNHCC for short) provides the ability to shorten the time spent on waiting for the recipes.
-But it does change the game experience of GTNH.\
-GTNH-CutCorners（或简称 GTNHCC）能够缩短等待配方的时间，但这也一定会影响你的 GTNH 游戏体验。
+* Default: 10× processing, world stays at 20 TPS.
+* GT single-block and common multiblock processing advance after the native power check. Inputs, outputs, parallel recipe counts, voltage checks and EU/t are unchanged. A job takes `ceil(native processing ticks / multiplier)`, with a minimum of one real tick. It cannot produce multiple batches in one real tick.
+* **Total EU per batch falls with processing time.** This is faster/cheaper processing, not an energy-conserving overclock. It also is not a 10× CPU/tickrate boost.
+* GT recipe definitions and NEI recipe durations stay original. The machine progress bar advances faster; NEI does not show the effective time.
+* Positive-EU electrical generation is excluded. The research station accelerates actual computation consumption, leaves computation requirements unchanged and retains the native finalization tick; its cosmetic progress clock is excluded. Purification keeps its shared controller/unit clock and shortens the common cycle instead of independently accelerating each unit.
+* Vanilla/EFR/Thaumcraft furnace processing and Railcraft blast/coke ovens have small runtime hooks because they do not all use the GT base classes. Coke ovens retain Railcraft's batched work granularity and visual cooldown; their work interval and step are scaled together.
+* Upstream instant-machine, recipe-tier, crop, bee, mining, logistics, node and harvest cheats are **not enabled by this fork**. Legacy code/API remains for upstream source compatibility but is not selected by the loader.
 
-GTNHCC is a fork of [GTNHModify](https://github.com/wohaopa/GTNHModify).\
-GTNHCC 是[万宁NH](https://github.com/wohaopa/GTNHModify)[*](https://www.mcmod.cn/class/15362.html)的一个分支。
+Machines with completely independent processing loops need a shared-loop integration of their own; this is not a promise to speed up every mod in GTNH. This version targets GTNH **2.9.0 / GT5 5.09.54.265**. Do not assume compatibility with other pack versions.
 
-You can open issues for bug reports, feature requests and suggestions.\
-你可以在 issues 里提交问题，请求功能和提出建议，或者[直接联系我](https://op.elytra.cn/about.html#%E4%B8%8E%E6%88%91%E8%81%94%E7%B3%BB)。
+## Verified locally
 
-Spreading GTNHCC to players who have not fully played GTNH is **NOT RECOMMENDED**.\
-**不推荐** 将 GTNHCC 传播给没有通关过 GTNH 的玩家。
+GTNH 2.9.0 / GT5 5.09.54.265, headless Java 25: eight unit tests and the isolated native processing checks pass.
+
+| Check | 1× | 10× |
+| --- | ---: | ---: |
+| LV macerator, 200-tick staged job | 200 | 20 |
+| Industrial centrifuge (current and legacy), 200-tick staged job | 200 | 20 |
+| Alloy blast smelter, 200-tick staged job | 200 | 20 |
+| Industrial chisel, 200-tick staged job | 200 | 20 |
+| Research computation 500 / native step 10 (finalization excluded) | 50 | 5 |
+
+Three consecutive batches produce exactly three outputs. Unpowered machine checks produce none. The real vanilla furnace cooks a potato in 20 ticks at 10×. Disabled processing returns to 200 ticks; an on-disk reload to 3× gives 67 ticks. All 187,204 loaded GT recipe rows remain identical across runtime multiplier switches. This is not a physical assembly test of every machine or a graphical client test. See [verification details and limits](integration/verified-2.9.0.json).
+
+## Configuration
+
+Install this jar **instead of** the upstream CutCorners jar, together with `conditional_mixin-1.1.0.jar`. For matching client/server displays, use matching jars on both sides. Back up your world and test your own machines before deploying. The old `CutCorners-1.cfg` is not used.
+
+The generated `config/CutCornersRuntime.cfg` contains:
+
+```properties
+general {
+    B:enabled=true
+    I:multiplier=10
+    B:gregTech=true
+    B:furnaces=true
+    B:railcraft=true
+    S:recipeMapBlacklist <
+        gg.recipe.naquadah_reactor
+        gt.recipe.largeboilerfakefuels
+    >
+}
+```
+
+Edit this file, then run `/cutcorners reload` as an operator (or `cutcorners reload` in the console). These fields are reloadable; initial mod installation/removal still requires a restart. Disabling acceleration returns future processing ticks to normal; it does not undo already completed jobs.
+
+`/cutcorners getMachineInfo` shows the targeted machine class and available recipe maps. Its displayed multiplier is the configured global rate; generator/blacklist exclusions still apply.
+
+## Build and isolated verification
+
+```sh
+./gradlew test build
+# Optional: use installed Temurin toolchains instead of upstream Azul defaults:
+./gradlew -PbuildJvmVendor=adoptium test build
+```
+
+The project uses Java 25 for compilation and the upstream multi-release Java 8/21/25 packaging. Java 8 is also required by the Minecraft development tooling. `buildJvmVendor` is optional and does not change the default upstream CI toolchain.
+
+`integration/run-local.py` copies a supplied GTNH server template to a fresh directory, binds only loopback on an ephemeral port and creates a fresh flat test world. It refuses to overwrite a directory or silently accept the EULA. Use `--accept-eula` only after agreeing to the Minecraft EULA. It never connects to or changes your production server.
+
+```sh
+python3 integration/run-local.py --template /path/to/GTNH-2.9.0-server \
+  --mod /path/to/built-CutCorners.jar --dependency /path/to/conditional_mixin-1.1.0.jar \
+  --java /path/to/java25/bin/java --work /tmp/cutc-runtime-test
+python3 integration/run-local.py --work /tmp/cutc-runtime-test --request
+# native-results.json, recipes.tsv.gz and server.log are written in that directory
+python3 integration/run-local.py --work /tmp/cutc-runtime-test --stop
+```
+
+The harness runs real registered GT machine classes and their native processing methods, with isolated power/output base-tile doubles; it does not claim to assemble every multiblock or simulate a player client. It checks consecutive batches at 1×/10×/disabled, short jobs, missing power, and a real vanilla furnace. Helpers can be rebuilt/reloaded in the same test JVM without restarting the pack.
+
+[Original upstream documentation](UPSTREAM_README.md).

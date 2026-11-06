@@ -1,6 +1,6 @@
 package com.github.wohaopa.GTNHModify.client.gui;
 
-import cn.elytra.gtnh.cutcorners.config.NewConfig;
+import cn.elytra.gtnh.cutcorners.config.RuntimeConfig;
 import com.github.wohaopa.GTNHModify.GTNHModifyMod;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
 import cpw.mods.fml.client.config.GuiConfig;
@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class GTNHModifyGuiConfig extends GuiConfig {
 
-    private static final Supplier<Configuration> CONF = () -> ConfigurationManager.getConfig(NewConfig.class);
+    private static final Supplier<Configuration> CONF = () -> ConfigurationManager.getConfig(RuntimeConfig.class);
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public GTNHModifyGuiConfig(GuiScreen guiScreen) {
