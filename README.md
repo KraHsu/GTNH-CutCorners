@@ -11,7 +11,7 @@ This fork accelerates successful machine processing ticks instead of changing GT
 * **Total EU per batch falls with processing time.** This is faster/cheaper processing, not an energy-conserving overclock. It also is not a 10× CPU/tickrate boost.
 * GT bricked blast furnaces and GT coke ovens have their own progress loops and are integrated from `v1.4.0-runtime.3`; recipes and per-batch solid fuel/input amounts remain unchanged.
 * GT recipe definitions and NEI recipe durations stay original. The machine progress bar advances faster; NEI does not show the effective time.
-* Positive-EU electrical generation is excluded. The research station accelerates actual computation consumption, leaves computation requirements unchanged and retains the native finalization tick; its cosmetic progress clock is excluded. Purification keeps its shared controller/unit clock and shortens the common cycle instead of independently accelerating each unit.
+* Positive-EU electrical generation is excluded. The research station accelerates actual computation consumption, leaves computation requirements unchanged and retains the native finalization tick; its cosmetic progress clock is excluded. Purification shortens the shared controller cycle; the coverage audit below found independently timed unit phases that are not yet correctly adapted.
 * Vanilla/EFR/Thaumcraft furnace processing and Railcraft blast/coke ovens have small runtime hooks because they do not all use the GT base classes. Coke ovens retain Railcraft's batched work granularity and visual cooldown; their work interval and step are scaled together.
 * Upstream instant-machine, recipe-tier, crop, bee, mining, logistics, node and harvest cheats are **not enabled by this fork**. Legacy code/API remains for upstream source compatibility but is not selected by the loader.
 
@@ -34,6 +34,27 @@ GTNH 2.9.0 / GT5 5.09.54.265, headless Java 25: eight unit tests and the isolate
 The primitive machines also pass disabled/blacklist, broken structure, missing input, blocked output, in-progress job, one-tick and rounding checks. Coke oven creosote amounts remain exactly 500/1000/1500 mB after consecutive coal jobs. Primitive structure flags are staged; physical structure assembly is not tested.
 
 Three consecutive batches produce exactly three outputs. Unpowered machine checks produce none. The real vanilla furnace cooks a potato in 20 ticks at 10×. Disabled processing returns to 200 ticks; an on-disk reload to 3× gives 67 ticks. All 187,204 loaded GT recipe rows remain identical across runtime multiplier switches. This is not a physical assembly test of every machine or a graphical client test. See [verification details and limits](integration/verified-2.9.0.json).
+
+## Coverage audit (2026-11-06)
+
+The requested scope is recipe processing and process cooling at 5×, with generation, industrial bees and non-recipe resource extraction at their original rates. **This is a target, not a claim that the current implementation fully meets it.** The read-only audit of the production pack found the following outstanding issues; no new runtime fixes or production deployment were made during this audit.
+
+* Independent timed recipe loops bypass the adapter in ten fusion implementations, the Target Chamber and the BEC teleportation node. All ten fusion classes and the Target Chamber have native counter probes; the BEC finding is based on its method body and call chain.
+* The purification plasma heater retains real-tick thermal phases after the main cycle is shortened. With identical replenished test hatches, the native fixture completes four heat/cool cycles at 1× but none at 5×. Five other independently staged purification units need further phase-level validation.
+* Three heat-exchanger implementations store positive thermal power in `mEUt`, so the generator exclusion also excludes their cooling. They need a separate treatment that preserves steam-generation policy.
+* Five sampled non-recipe resource extractors currently receive a progress step of five through the shared policy. They require exclusions to meet the scope above.
+* IC2, EnderIO, Forestry and other registered processing systems have no general adapter here. The audit lists 31 concrete registered examples, without claiming they are all craftable in GTNH.
+
+Seven cooling/solidifying machine clocks advance by five in native method probes; this does not validate every auxiliary fluid or linked machine phase. The Beam Crafter consumes supplied particles directly and can finish in one call with sufficient input; its particle count must not be multiplied as if it were an elapsed-time counter.
+
+[Curated evidence and limitations](integration/coverage-audit-2.9.0.json) records the exact tested version and results. `runtime.3` only fixes the two primitive ovens described above; it does **not** resolve the audit findings.
+
+The audit tools are separate from runtime code:
+
+1. `CoverageScan.java` uses ASM 9.9.1 (`asm` and `asm-tree`) and Java 25 to inventory effective multi-release JAR classes and timer writes. Arguments: `MODS_DIRECTORY OUTPUT_DIRECTORY [SRG_MINECRAFT_JAR]`.
+2. `CoverageProbe.java` and `CoverageRuntimeChecks.java` compile alongside `NativeChecks.java` with `javac --release 8`. The isolated harness can run their static `run(String output)` entry points through `checks/request.properties` (`jar`, `class`, `output`), without relaunching the pack. The runtime probes stage native machine state; they do not physically assemble factories.
+3. `coverage-audit.py --bytecode SCAN_DIRECTORY --inventory INVENTORY_JSON --out OUTPUT_DIRECTORY` follows class/parent dispatch from tick methods. It does not resolve arbitrary member-object calls, reflection or every processing engine.
+4. `build-coverage-report.py AUDIT_DIRECTORY` produces the searchable standalone HTML and JSON from `machine-inventory.json`, `registered/call-chains.json`, `runtime-probes.json` and `purification-phases.json`. The last file is curated phase inspection data. This report generator is intentionally specific to these 2.9.0 findings and rejects missing/failed probe evidence. Raw server JARs and large bytecode tables are not committed.
 
 ## Configuration
 

@@ -1,0 +1,524 @@
+{
+  "audit_time": "2026-11-06T22:47:59.576647-08:00",
+  "live_version": "v1.4.0-runtime.2",
+  "staged_version": "v1.4.0-runtime.3",
+  "tested_version": "v1.4.0-runtime.3",
+  "desired_multiplier": 5,
+  "scope": "配方加工与工艺冷却；不加速发电、蜂房或无常规配方的采集生产。",
+  "registered_mte_entries": 3412,
+  "registered_mte_classes": 568,
+  "tile_registry_entries": 1522,
+  "tile_registry_classes": 1425,
+  "exact_live_jars": 221,
+  "class_entries_scanned": 94631,
+  "timer_gap_classes": [
+    "goodgenerator.blocks.tileEntity.MTELargeFusionComputer1",
+    "goodgenerator.blocks.tileEntity.MTELargeFusionComputer2",
+    "goodgenerator.blocks.tileEntity.MTELargeFusionComputer3",
+    "goodgenerator.blocks.tileEntity.MTELargeFusionComputer4",
+    "goodgenerator.blocks.tileEntity.MTELargeFusionComputer5",
+    "gregtech.common.tileentities.machines.multi.MTEFusionComputer1",
+    "gregtech.common.tileentities.machines.multi.MTEFusionComputer2",
+    "gregtech.common.tileentities.machines.multi.MTEFusionComputer3",
+    "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk4",
+    "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk5",
+    "gtnhlanth.common.tileentity.MTETargetChamber",
+    "tectech.thing.metaTileEntity.multi.bec.MTEBECIONode"
+  ],
+  "thermal_phase_gap": "gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitPlasmaHeater",
+  "energy_coupled_cooling": [
+    "gregtech.common.tileentities.machines.multi.MTEHeatExchanger",
+    "goodgenerator.blocks.tileEntity.MTEExtremeHeatExchanger",
+    "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvHeatExchanger"
+  ],
+  "confirmed_scope_mismatch_samples": [
+    "gregtech.common.tileentities.machines.basic.MTEMiner",
+    "gregtech.common.tileentities.machines.basic.MTEPump",
+    "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+    "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+    "gregtech.common.tileentities.machines.multi.steam.MTESteamWaterPump"
+  ],
+  "purification_phase_review": [
+    "gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitBaryonicPerfection",
+    "gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitDegasser",
+    "gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitFlocculation",
+    "gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitPhAdjustment",
+    "gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitUVTreatment"
+  ],
+  "non_gt_unadapted_processing_examples": [
+    {
+      "id": "Recycler",
+      "class": "ic2.core.block.machine.tileentity.TileEntityRecycler",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "RCRockCrusherTile",
+      "class": "mods.railcraft.common.blocks.machine.alpha.TileRockCrusher",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Induction Furnace",
+      "class": "ic2.core.block.machine.tileentity.TileEntityInduction",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "blockPainterTileEntity",
+      "class": "crazypants.enderio.machine.painter.TileEntityPainter",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Macerator",
+      "class": "ic2.core.block.machine.tileentity.TileEntityMacerator",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Canning Machine",
+      "class": "ic2.core.block.machine.tileentity.TileEntityCanner",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "TileInfusionStone",
+      "class": "thaumcraft.common.tiles.TileInfusionMatrix",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Bottler",
+      "class": "forestry.factory.tiles.TileBottler",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Fermenter",
+      "class": "forestry.factory.tiles.TileFermenter",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "RCRollingMachineTile",
+      "class": "mods.railcraft.common.blocks.machine.alpha.TileRollingMachine",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Thermal Centrifuge",
+      "class": "ic2.core.block.machine.tileentity.TileEntityCentrifuge",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Moistener",
+      "class": "forestry.factory.tiles.TileMoistener",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Solid Canner Maschine",
+      "class": "ic2.core.block.machine.tileentity.TileEntitySolidCanner",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Compressor",
+      "class": "ic2.core.block.machine.tileentity.TileEntityCompressor",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Metal Former",
+      "class": "ic2.core.block.machine.tileentity.TileEntityMetalFormer",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "blockSagMillTileEntity",
+      "class": "crazypants.enderio.machine.crusher.TileCrusher",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Still",
+      "class": "forestry.factory.tiles.TileStill",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Centrifuge",
+      "class": "forestry.factory.tiles.TileCentrifuge",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Ore Washing Plant",
+      "class": "ic2.core.block.machine.tileentity.TileEntityOreWashing",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Fabricator",
+      "class": "forestry.factory.tiles.TileFabricator",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "blockAlloySmelterTileEntity",
+      "class": "crazypants.enderio.machine.alloy.TileAlloySmelter",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Extractor",
+      "class": "ic2.core.block.machine.tileentity.TileEntityExtractor",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Carpenter",
+      "class": "forestry.factory.tiles.TileCarpenter",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Fluid Bottler Maschine",
+      "class": "ic2.core.block.machine.tileentity.TileEntityFluidBottler",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Block Cutter",
+      "class": "ic2.core.block.machine.tileentity.TileEntityBlockCutter",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "TileCentrifuge",
+      "class": "thaumcraft.common.tiles.TileCentrifuge",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Lathe",
+      "class": "ic2.core.block.machine.tileentity.TileEntityLathe",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "RCSteamOvenTile",
+      "class": "mods.railcraft.common.blocks.machine.alpha.TileSteamOven",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "blockSliceAndSpliceTileEntity",
+      "class": "crazypants.enderio.machine.slicensplice.TileSliceAndSplice",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "forestry.Squeezer",
+      "class": "forestry.factory.tiles.TileSqueezer",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    },
+    {
+      "id": "Electric Furnace",
+      "class": "ic2.core.block.machine.tileentity.TileEntityElectricFurnace",
+      "status": "当前 CutCorners 无相应适配",
+      "note": "已注册的加工族示例。未额外应用本次 5 倍；未核验其合成可得性、玩家升级件或整合包自身倍率。"
+    }
+  ],
+  "runtime_probes": {
+    "fusion": [
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer1",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer1",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer2",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer2",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer3",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer3",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer1",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer1",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer2",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer2",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer3",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer3",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer4",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer4",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer5",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer5",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk4",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk4",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk5",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "energy_spent": 2
+      },
+      {
+        "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk5",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "energy_spent": 2
+      }
+    ],
+    "target": [
+      {
+        "class": "gtnhlanth.common.tileentity.MTETargetChamber",
+        "multiplier": 1,
+        "progress_delta": 1,
+        "scope": "native no-beam-required branch; not a full assembled recipe"
+      },
+      {
+        "class": "gtnhlanth.common.tileentity.MTETargetChamber",
+        "multiplier": 5,
+        "progress_delta": 1,
+        "scope": "native no-beam-required branch; not a full assembled recipe"
+      }
+    ],
+    "beam": [
+      {
+        "buffer_full": false,
+        "progress_after_one_call": 0,
+        "required": 200,
+        "amountA": 0,
+        "amountB": 0
+      },
+      {
+        "buffer_full": true,
+        "progress_after_one_call": 200,
+        "required": 200,
+        "amountA": 100,
+        "amountB": 100
+      }
+    ],
+    "thermal": [
+      {
+        "multiplier": 1,
+        "controller_cycle_ticks": 2400,
+        "thermal_cycles_completed": 4,
+        "temperature": 0,
+        "state": "Heating",
+        "plasma_litres": 400,
+        "coolant_litres": 8000,
+        "scope": "native thermal phase with replenished fixture hatches; no physical plant or power controller assembly"
+      },
+      {
+        "multiplier": 5,
+        "controller_cycle_ticks": 480,
+        "thermal_cycles_completed": 0,
+        "temperature": 3000,
+        "state": "Cooling",
+        "plasma_litres": 100,
+        "coolant_litres": 1400,
+        "scope": "native thermal phase with replenished fixture hatches; no physical plant or power controller assembly"
+      }
+    ],
+    "cooling": [
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEVacuumFreezer",
+        "multiplier": 5,
+        "progress_delta": 5,
+        "scope": "native progress clock only; no structure or full coolant recipe validation"
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTECryogenicFreezer",
+        "multiplier": 5,
+        "progress_delta": 5,
+        "scope": "native progress clock only; no structure or full coolant recipe validation"
+      },
+      {
+        "class": "bartworks.common.tileentities.multis.mega.MTEMegaVacuumFreezerLegacy",
+        "multiplier": 5,
+        "progress_delta": 5,
+        "scope": "native progress clock only; no structure or full coolant recipe validation"
+      },
+      {
+        "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialVacuumFreezerLegacy",
+        "multiplier": 5,
+        "progress_delta": 5,
+        "scope": "native progress clock only; no structure or full coolant recipe validation"
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEMassSolidifier",
+        "multiplier": 5,
+        "progress_delta": 5,
+        "scope": "native progress clock only; no structure or full coolant recipe validation"
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTECoolantTower",
+        "multiplier": 5,
+        "progress_delta": 5,
+        "scope": "native progress clock only; no structure or full coolant recipe validation"
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.pcb.MTEPCBCoolingTower",
+        "multiplier": 5,
+        "progress_delta": 5,
+        "scope": "native progress clock only; no structure or full coolant recipe validation"
+      }
+    ],
+    "scopePolicy": [
+      {
+        "class": "gregtech.common.tileentities.machines.basic.MTEMiner",
+        "multiplier": 5,
+        "configured_progress_step": 5,
+        "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.basic.MTEPump",
+        "multiplier": 5,
+        "configured_progress_step": 5,
+        "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+        "multiplier": 5,
+        "configured_progress_step": 5,
+        "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+        "multiplier": 5,
+        "configured_progress_step": 5,
+        "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+      },
+      {
+        "class": "gregtech.common.tileentities.machines.multi.steam.MTESteamWaterPump",
+        "multiplier": 5,
+        "configured_progress_step": 5,
+        "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+      }
+    ],
+    "heatExchangers": [
+      {
+        "class": "gregtech.common.tileentities.machines.multi.MTEHeatExchanger",
+        "positive_thermal_power": 100,
+        "multiplier": 5,
+        "progress_step": 1,
+        "scope": "runtime filtering with positive mEUt used by native heat-exchanger processing; no full fluid/steam plant test"
+      },
+      {
+        "class": "goodgenerator.blocks.tileEntity.MTEExtremeHeatExchanger",
+        "positive_thermal_power": 100,
+        "multiplier": 5,
+        "progress_step": 1,
+        "scope": "runtime filtering with positive mEUt used by native heat-exchanger processing; no full fluid/steam plant test"
+      },
+      {
+        "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvHeatExchanger",
+        "positive_thermal_power": 100,
+        "multiplier": 5,
+        "progress_step": 1,
+        "scope": "runtime filtering with positive mEUt used by native heat-exchanger processing; no full fluid/steam plant test"
+      }
+    ],
+    "status": "completed"
+  },
+  "production_changed": false,
+  "limits": [
+    "Static method-chain analysis follows class/parent dispatch, not arbitrary member-object, reflection or all network callbacks.",
+    "Live-pack jar set is matched byte-for-byte. Runtime registry/probes come from an isolated GTNH template; extra live mods do not add GT machine classes.",
+    "Native tick/counter/phase probes stage working/structure/input conditions; no physical assembly of every machine, no player client or full factory throughput validation.",
+    "Known non-GT examples are not a full enumeration of every modded processing system.",
+    "Cold machine counter probes verify processing progress, not all auxiliary coolant/upgrade behaviour."
+  ],
+  "code_commit": "530e24a",
+  "runtime_fix_status": "Audit only: no new runtime changes; runtime.3 primitive-machine fixes remain staged.",
+  "live_runtime_jar_sha256": "cc171b50da54dc07138e8ced674afb3001e822b787679028c1eeff711d96b5e2",
+  "tested_runtime_jar_sha256": "72217fa2140e3ea604b45029f29291e3f86c10f86e05e53a7e92d7a3c1d1d816"
+}
