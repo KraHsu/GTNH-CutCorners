@@ -31,6 +31,11 @@ public final class RuntimeConfig {
     @Config.Reloadable("runtime")
     public static boolean railcraft;
 
+    @Config.Comment("Recipe-processing adapters for IC2, EnderIO, Forestry and Thaumcraft. Not world production.")
+    @Config.DefaultBoolean(true)
+    @Config.Reloadable("runtime")
+    public static boolean otherMachines;
+
     @Config.Comment("Exact GT recipe-map names to exclude. Electrical generators are always excluded.")
     @Config.DefaultStringList({"gg.recipe.naquadah_reactor", "gt.recipe.largeboilerfakefuels"})
     @Config.Reloadable("runtime")

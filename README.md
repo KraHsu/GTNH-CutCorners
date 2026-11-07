@@ -10,9 +10,13 @@ This fork accelerates successful machine processing ticks instead of changing GT
 * GT single-block and common multiblock processing advance after the native power check. Inputs, outputs, parallel recipe counts, voltage checks and EU/t are unchanged. A job takes `ceil(native processing ticks / multiplier)`, with a minimum of one real tick. It cannot produce multiple batches in one real tick.
 * **Total EU per batch falls with processing time.** This is faster/cheaper processing, not an energy-conserving overclock. It also is not a 10× CPU/tickrate boost.
 * GT bricked blast furnaces and GT coke ovens have their own progress loops and are integrated from `v1.4.0-runtime.3`; recipes and per-batch solid fuel/input amounts remain unchanged.
+* From `v1.4.0-runtime.4`, ten fusion variants and the Target Chamber have productive counter adapters; BEC nodes replay native gated substeps instead of multiplying material quantities.
 * GT recipe definitions and NEI recipe durations stay original. The machine progress bar advances faster; NEI does not show the effective time.
-* Positive-EU electrical generation is excluded. The research station accelerates actual computation consumption, leaves computation requirements unchanged and retains the native finalization tick; its cosmetic progress clock is excluded. Purification shortens the shared controller cycle; the coverage audit below found independently timed unit phases that are not yet correctly adapted.
+* Positive-EU electrical generation is excluded. The research station accelerates actual computation consumption, leaves computation requirements unchanged and retains the native finalization tick; its cosmetic progress clock is excluded. Purification retains the original cycle length and advances the shared controller/unit progress plus six native process-phase bodies on the same accelerated clock. Old shortened cycles are converted once, retaining completion fraction and phase state.
 * Vanilla/EFR/Thaumcraft furnace processing and Railcraft blast/coke ovens have small runtime hooks because they do not all use the GT base classes. Coke ovens retain Railcraft's batched work granularity and visual cooldown; their work interval and step are scaled together.
+* Thermal exchangers are explicit exceptions to the positive-power filter: cold-fluid processing accelerates, while native per-tick steam production and distilled-water use remain unchanged. Total steam recovered per hot-fluid batch consequently falls.
+* IC2 standard machines/induction, EnderIO powered tasks, seven Forestry factory classes plus the moistener, Railcraft crusher/rolling/steam oven and Thaumcraft centrifuge/infusion now have processing adapters. Native polling/batch granularity limits short jobs; this is not always an exact wall-clock 5×. The steam oven retains its 8000 mB startup buffer gate while charging a shortened cycle’s share of prepaid operating steam. The manual IC2 lathe is unchanged.
+* Mining, drilling, pumping, industrial bees, world farming/fishing and orbital extraction families are excluded from the shared processing policy; 43 registered implementation classes were checked at 5×.
 * Upstream instant-machine, recipe-tier, crop, bee, mining, logistics, node and harvest cheats are **not enabled by this fork**. Legacy code/API remains for upstream source compatibility but is not selected by the loader.
 
 Machines with completely independent processing loops need a shared-loop integration of their own; this is not a promise to speed up every mod in GTNH. This version targets GTNH **2.9.0 / GT5 5.09.54.265**. Do not assume compatibility with other pack versions.
@@ -35,19 +39,34 @@ The primitive machines also pass disabled/blacklist, broken structure, missing i
 
 Three consecutive batches produce exactly three outputs. Unpowered machine checks produce none. The real vanilla furnace cooks a potato in 20 ticks at 10×. Disabled processing returns to 200 ticks; an on-disk reload to 3× gives 67 ticks. All 187,204 loaded GT recipe rows remain identical across runtime multiplier switches. This is not a physical assembly test of every machine or a graphical client test. See [verification details and limits](integration/verified-2.9.0.json).
 
-## Coverage audit (2026-11-06)
+## Coverage fixes in runtime.4
 
-The requested scope is recipe processing and process cooling at 5×, with generation, industrial bees and non-recipe resource extraction at their original rates. **This is a target, not a claim that the current implementation fully meets it.** The read-only audit of the production pack found the following outstanding issues; no new runtime fixes or production deployment were made during this audit.
+The [earlier audit](integration/coverage-audit-2.9.0.json) documents the runtime.2/.3 gaps. **runtime.4 implements those missing processing adapters and the extraction exclusions.** The archived audit is evidence of the earlier state, not an open-issue list for runtime.4.
 
-* Independent timed recipe loops bypass the adapter in ten fusion implementations, the Target Chamber and the BEC teleportation node. All ten fusion classes and the Target Chamber have native counter probes; the BEC finding is based on its method body and call chain.
-* The purification plasma heater retains real-tick thermal phases after the main cycle is shortened. With identical replenished test hatches, the native fixture completes four heat/cool cycles at 1× but none at 5×. Five other independently staged purification units need further phase-level validation.
-* Three heat-exchanger implementations store positive thermal power in `mEUt`, so the generator exclusion also excludes their cooling. They need a separate treatment that preserves steam-generation policy.
-* Five sampled non-recipe resource extractors currently receive a progress step of five through the shared policy. They require exclusions to meet the scope above.
-* IC2, EnderIO, Forestry and other registered processing systems have no general adapter here. The audit lists 31 concrete registered examples, without claiming they are all craftable in GTNH.
+Native checks in an isolated Java 25 pack now pass:
 
-Seven cooling/solidifying machine clocks advance by five in native method probes; this does not validate every auxiliary fluid or linked machine phase. The Beam Crafter consumes supplied particles directly and can finish in one call with sufficient input; its particle count must not be multiplied as if it were an elapsed-time counter.
+| Check | 1× | 5× | Preserved behaviour |
+| --- | ---: | ---: | --- |
+| Ten fusion implementations, one productive tick | +1 | +5 | 2 EU spent in either case |
+| Target Chamber, no-beam-required branch | +1 | +5 | Native input/beam gates remain in method |
+| Plasma heater, full native 2400-tick cycle | 2400 real ticks | 480 real ticks | 4 full heat/cool loops, 400 L plasma and 8000 L coolant |
+| Large/Extreme exchanger, 20 real ticks | 1000 cold / 80000 steam | 5000 cold / 80000 steam | 500 distilled water in both cases |
+| XL exchanger, 20 real ticks | 1000 cold / 160000 steam | 5000 cold / 160000 steam | 1000 distilled water in both cases |
+| IC2 furnace, powered productive tick | +1 | +5 | 2 EU spent; no progress without power |
+| EnderIO task, actual 10 RF consumed | 10 work | 50 work | Actual RF withdrawal stays 10; no work with zero RF |
 
-[Curated evidence and limitations](integration/coverage-audit-2.9.0.json) records the exact tested version and results. `runtime.3` only fixes the two primitive ovens described above; it does **not** resolve the audit findings.
+BEC native substep tests preserve no-power/no-nanite stalls, nanite tier boundaries, immediate/step pauses and exactly 12 units of fixture condensate at either speed. Controller/unit clock sharing, unit-map blacklist propagation, UV countdown and conversion of old shortened purification cycles also pass. Conversion preserves existing phase state; it does not invent work missed by the old code.
+
+The previous 22 primitive-machine, 23 common-machine and 4 research cases pass, as do all 8 unit tests, client compatibility checks and recipe-snapshot comparison. [Full results and precise limits](integration/verified-runtime.4-2.9.0.json) distinguish native processing probes from the narrower transformed-adapter checks for other mods. Physical multiblock assembly, every supply schedule and graphical clients are not validated by this suite.
+
+The Beam Crafter consumes particles as they arrive and can finish in one call when fully supplied; its particle count is not a timer to multiply. Industrial bees, world extraction and the manually operated IC2 lathe remain unchanged.
+
+To rerun these checks without restarting the isolated pack for each helper:
+
+```sh
+python3 integration/run-coverage.py --work /tmp/cutc-runtime-test \
+  --java /path/to/java25/bin/java --asm /path/to/asm-9.9.1.jar --run-native
+```
 
 The audit tools are separate from runtime code:
 
@@ -69,6 +88,7 @@ general {
     B:gregTech=true
     B:furnaces=true
     B:railcraft=true
+    B:otherMachines=true
     S:recipeMapBlacklist <
         gg.recipe.naquadah_reactor
         gt.recipe.largeboilerfakefuels

@@ -1,7 +1,6 @@
 package cn.elytra.gtnh.cutcorners.strate.impl.conf;
 
 import cn.elytra.gtnh.cutcorners.config.RuntimeConfig;
-import cn.elytra.gtnh.cutcorners.runtime.ProgressMath;
 import cn.elytra.gtnh.cutcorners.runtime.RuntimeProgress;
 import cn.elytra.gtnh.cutcorners.strate.ICutCornerStrategy;
 
@@ -12,6 +11,6 @@ public final class RuntimeStrategy implements ICutCornerStrategy {
     @Override public int getMaxSpecialFurnaceSmeltingTime(int original) { return RuntimeProgress.furnaceDuration(original); }
     @Override public int getThaumcraftFurnaceSmeltingTime(int original) { return RuntimeProgress.furnaceDuration(original); }
     @Override public int getWaterPurificationCycleTime(int original) {
-        return RuntimeConfig.gregTech ? ProgressMath.duration(original, RuntimeProgress.speed()) : original;
+        return original; // Controller and unit phases now use the same accelerated native clock.
     }
 }
