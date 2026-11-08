@@ -40,4 +40,13 @@ class ProgressMathTest {
         assertEquals(214748365,ProgressMath.duration(Integer.MAX_VALUE,10));
         assertEquals(1,ProgressMath.duration(1,1000));
     }
+    @Test void miningClockChangesKeepCompletedAndPendingExtractionSeparate() {
+        assertEquals(16, ProgressMath.miningProgress(80, 160, 32));
+        assertEquals(30, ProgressMath.miningProgress(158, 160, 32));
+        assertEquals(31, ProgressMath.miningProgress(159, 160, 32));
+        assertEquals(159, ProgressMath.miningProgress(31, 32, 160));
+        assertEquals(-100, ProgressMath.miningProgress(-100, 160, 32));
+        assertEquals(0, ProgressMath.miningProgress(158, 160, 1));
+        assertEquals(536_870_911, ProgressMath.miningProgress(1, 4, Integer.MAX_VALUE));
+    }
 }

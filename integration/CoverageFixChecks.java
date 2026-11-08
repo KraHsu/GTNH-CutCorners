@@ -26,7 +26,7 @@ public class CoverageFixChecks extends CoverageRuntimeChecks {
 
     public static void run(String output)throws Exception {
         Map<String,Object> report=new LinkedHashMap<String,Object>();
-        Class<?> cfg=c("cn.elytra.gtnh.cutcorners.config.RuntimeConfig");int prior=cfg.getField("multiplier").getInt(null);
+        Class<?> cfg=c("cn.elytra.gtnh.cutcorners.config.RuntimeConfig");int prior=cfg.getField("multiplier").getInt(null);boolean mining=cfg.getField("mining").getBoolean(null);cfg.getField("mining").setBoolean(null,false);report.put("mining_disabled_for_legacy_scope_checks",true);
         try {
             report.put("network",network());snapshot();
             List<Map<String,Object>> f=new ArrayList<Map<String,Object>>();
@@ -38,7 +38,7 @@ public class CoverageFixChecks extends CoverageRuntimeChecks {
             List<Map<String,Object>> scopes=new ArrayList<Map<String,Object>>();for(String type:new String[]{"gregtech.common.tileentities.machines.basic.MTEMiner","gregtech.common.tileentities.machines.basic.MTEPump","gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1","gregtech.common.tileentities.machines.multi.MTEOilDrill1","gregtech.common.tileentities.machines.multi.steam.MTESteamWaterPump"}){Map<String,Object> r=scope(type);check(((Number)r.get("configured_progress_step")).intValue()==1,"Extraction scope "+r);scopes.add(r);}report.put("scope",scopes);
             List<Map<String,Object>> hx=new ArrayList<Map<String,Object>>();for(String type:new String[]{"gregtech.common.tileentities.machines.multi.MTEHeatExchanger","goodgenerator.blocks.tileEntity.MTEExtremeHeatExchanger","gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvHeatExchanger"}){Map<String,Object> r=heatExchanger(type);check(((Number)r.get("progress_step")).intValue()==5,"Exchanger step "+r);hx.add(r);}report.put("heatExchangers",hx);
             report.put("status","passed");
-        }catch(Throwable error){error.printStackTrace();report.put("status","failed");report.put("error",error.toString());}finally{cfg.getField("multiplier").setInt(null,prior);}
+        }catch(Throwable error){error.printStackTrace();report.put("status","failed");report.put("error",error.toString());}finally{cfg.getField("mining").setBoolean(null,mining);cfg.getField("multiplier").setInt(null,prior);}
         Object gson=c("com.google.gson.Gson").newInstance();Files.write(Paths.get(output),((String)gson.getClass().getMethod("toJson",Object.class).invoke(gson,report)).getBytes("UTF-8"));
     }
 }

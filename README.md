@@ -16,7 +16,7 @@ This fork accelerates successful machine processing ticks instead of changing GT
 * Vanilla/EFR/Thaumcraft furnace processing and Railcraft blast/coke ovens have small runtime hooks because they do not all use the GT base classes. Coke ovens retain Railcraft's batched work granularity and visual cooldown; their work interval and step are scaled together.
 * Thermal exchangers are explicit exceptions to the positive-power filter: cold-fluid processing accelerates, while native per-tick steam production and distilled-water use remain unchanged. Total steam recovered per hot-fluid batch consequently falls.
 * IC2 standard machines/induction, EnderIO powered tasks, seven Forestry factory classes plus the moistener, Railcraft crusher/rolling/steam oven and Thaumcraft centrifuge/infusion now have processing adapters. Native polling/batch granularity limits short jobs; this is not always an exact wall-clock 5×. The steam oven retains its 8000 mB startup buffer gate while charging a shortened cycle’s share of prepaid operating steam. The manual IC2 lathe is unchanged.
-* Mining, drilling, pumping, industrial bees, world farming/fishing and orbital extraction families are excluded from the shared processing policy; 43 registered implementation classes were checked at 5×.
+* From `v1.4.0-runtime.5`, GT basic miners, ore drilling plants, void miners and orbital mining modules use the configured multiplier when `mining=true`. Basic miners shorten their native extraction clock rather than skipping its extraction-at-duration-1 boundary. Their pipe retraction interval stays at least one tick. Pumps, oil drills, industrial bees, world farming/fishing and orbital pumps remain excluded.
 * Upstream instant-machine, recipe-tier, crop, bee, mining, logistics, node and harvest cheats are **not enabled by this fork**. Legacy code/API remains for upstream source compatibility but is not selected by the loader.
 
 Machines with completely independent processing loops need a shared-loop integration of their own; this is not a promise to speed up every mod in GTNH. This version targets GTNH **2.9.0 / GT5 5.09.54.265**. Do not assume compatibility with other pack versions.
@@ -59,7 +59,39 @@ BEC native substep tests preserve no-power/no-nanite stalls, nanite tier boundar
 
 The previous 22 primitive-machine, 23 common-machine and 4 research cases pass, as do all 8 unit tests, client compatibility checks and recipe-snapshot comparison. [Full results and precise limits](integration/verified-runtime.4-2.9.0.json) distinguish native processing probes from the narrower transformed-adapter checks for other mods. Physical multiblock assembly, every supply schedule and graphical clients are not validated by this suite.
 
-The Beam Crafter consumes particles as they arrive and can finish in one call when fully supplied; its particle count is not a timer to multiply. Industrial bees, world extraction and the manually operated IC2 lathe remain unchanged.
+The Beam Crafter consumes particles as they arrive and can finish in one call when fully supplied; its particle count is not a timer to multiply. Industrial bees, non-mining world extraction and the manually operated IC2 lathe remain unchanged.
+
+## Mining in runtime.5
+
+`mining=true` enables the configured processing multiplier for GT mining families.
+It does not change drilling-pipe counts, drop quantities, radius, voltage tier,
+EU/t, or per-cycle fluid inputs. IC2 miners, Ender Quarries and mining vehicles
+are outside this GT mining integration.
+
+The isolated GTNH 2.9.0 / Java 25 world tests execute the real basic miner,
+pipe delegate and ore-breaking code. Four iron ore blocks yield four identical
+outputs, with the following extraction intervals and energy totals:
+
+| Basic miner | Native interval | 5× interval | EU for four ores, 1× / 5× |
+| --- | ---: | ---: | ---: |
+| LV | 160 ticks | 32 ticks | 5120 / 1024 |
+| MV | 80 ticks | 16 ticks | 10240 / 2048 |
+| HV | 40 ticks | 8 ticks | 20480 / 4096 |
+
+Sixteen basic-miner cases cover feature/global/GT disabling, no power, blocked
+outputs, missing pipes, real pipe descent, active-job clock changes in both
+directions, and the one-tick limit at 1000×. Three retraction cases return all
+four physical pipes once, including at 1000×. Ore drilling, void mining and
+orbital mining additionally pass nine native productive-tick/power checks:
+progress advances by 1 or 5 while consuming the same 2 EU, and no progress is
+made without power. These multiblock checks stage controller state; they do
+not assemble their structures or test their complete resource-extraction
+throughput. All 43 registered extraction-family classes are also checked to
+keep non-mining extraction at its original rate.
+
+Clock conversion preserves pending versus already-performed extraction when
+the multiplier changes. A saved interval is converted once and the tier's
+original speed field is never overwritten. [Verification results and limits](integration/verified-runtime.5-2.9.0.json).
 
 To rerun these checks without restarting the isolated pack for each helper:
 
@@ -88,6 +120,7 @@ general {
     B:gregTech=true
     B:furnaces=true
     B:railcraft=true
+    B:mining=true
     B:otherMachines=true
     S:recipeMapBlacklist <
         gg.recipe.naquadah_reactor

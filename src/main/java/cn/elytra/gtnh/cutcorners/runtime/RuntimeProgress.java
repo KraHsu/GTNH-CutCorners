@@ -6,6 +6,7 @@ import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBas
 import gregtech.api.metatileentity.implementations.MTEMultiBlockBase;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.interfaces.tileentity.RecipeMapWorkable;
+import gregtech.common.tileentities.machines.basic.MTEMiner;
 import gregtech.common.tileentities.machines.multi.purification.MTEPurificationPlant;
 import gregtech.common.tileentities.machines.multi.purification.MTEPurificationUnitBase;
 import tectech.thing.metaTileEntity.multi.MTEResearchStation;
@@ -33,6 +34,14 @@ public final class RuntimeProgress {
         "gregtech.common.tileentities.machines.multi.MTEHeatExchanger",
         "goodgenerator.blocks.tileEntity.MTEExtremeHeatExchanger",
         "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvHeatExchanger"));
+    private static final java.util.Set<String> MINERS = new java.util.HashSet<String>(java.util.Arrays.asList(
+        "gregtech.common.tileentities.machines.basic.MTEMiner",
+        "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlantBase",
+        "bwcrossmod.galacticgreg.MTEVoidMinerBase",
+        "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner"));
+    private static final ClassValue<Boolean> MINER_CLASS = new ClassValue<Boolean>() {
+        @Override protected Boolean computeValue(Class<?> type) { return matches(type, MINERS); }
+    };
     private static final ClassValue<Boolean> EXTRACTION_CLASS = new ClassValue<Boolean>() {
         @Override protected Boolean computeValue(Class<?> type) { return matches(type, EXTRACTION); }
     };
@@ -65,9 +74,22 @@ public final class RuntimeProgress {
         return processingSpeed();
     }
     public static int otherSpeed() { return RuntimeConfig.otherMachines ? speed() : 1; }
+    public static int miningSpeed() { return RuntimeConfig.mining ? processingSpeed() : 1; }
+    public static int miningDuration(int original) { return ProgressMath.duration(original, miningSpeed()); }
+    /** The native delegate divides this value by five before using it as a modulo divisor. */
+    public static int miningRetractionClock(Object owner, int original) {
+        if (!(owner instanceof MTEMiner) || miningSpeed() <= 1) return original;
+        return ProgressMath.duration(Math.max(1, original / 5), miningSpeed()) * 5;
+    }
 
     public static int increment(Object machine, int progress, int maximum) {
-        if (!RuntimeConfig.gregTech || !RuntimeConfig.enabled || EXTRACTION_CLASS.get(machine.getClass())) return 1;
+        if (!RuntimeConfig.gregTech || !RuntimeConfig.enabled) return 1;
+        // Basic miners perform extraction at duration-1, so they use a shorter
+        // native interval and MUST retain the original +1 counter step.
+        if (machine instanceof MTEMiner) return 1;
+        if (MINER_CLASS.get(machine.getClass())) {
+            if (!RuntimeConfig.mining) return 1;
+        } else if (EXTRACTION_CLASS.get(machine.getClass())) return 1;
         // Purification's controller and native unit phases share a separate
         // accelerated clock; do not also apply the common counter adapter.
         // Research completion is governed by computation, not its progress bar.
