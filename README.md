@@ -16,14 +16,14 @@ This fork accelerates successful machine processing ticks instead of changing GT
 * Vanilla/EFR/Thaumcraft furnace processing and Railcraft blast/coke ovens have small runtime hooks because they do not all use the GT base classes. Coke ovens retain Railcraft's batched work granularity and visual cooldown; their work interval and step are scaled together.
 * Thermal exchangers are explicit exceptions to the positive-power filter: cold-fluid processing accelerates, while native per-tick steam production and distilled-water use remain unchanged. Total steam recovered per hot-fluid batch consequently falls.
 * IC2 standard machines/induction, EnderIO powered tasks, seven Forestry factory classes plus the moistener, Railcraft crusher/rolling/steam oven and Thaumcraft centrifuge/infusion now have processing adapters. Native polling/batch granularity limits short jobs; this is not always an exact wall-clock 5×. The steam oven retains its 8000 mB startup buffer gate while charging a shortened cycle’s share of prepaid operating steam. The manual IC2 lathe is unchanged.
-* From `v1.4.0-runtime.5`, GT basic miners, ore drilling plants, void miners and orbital mining modules use the configured multiplier when `mining=true`. Basic miners shorten their native extraction clock rather than skipping its extraction-at-duration-1 boundary. Their pipe retraction interval stays at least one tick. Pumps, oil drills, industrial bees, world farming/fishing and orbital pumps remain excluded.
+* From `v1.4.0-runtime.5`, GT basic miners, ore drilling plants, void miners and orbital mining modules use the configured multiplier when `mining=true`. Basic miners shorten their native extraction clock rather than skipping its extraction-at-duration-1 boundary. Their pipe retraction interval stays at least one tick. Pumps and oil drills were excluded until runtime.6 (see below); industrial bees, world farming/fishing and orbital pumps remain excluded.
 * Upstream instant-machine, recipe-tier, crop, bee, mining, logistics, node and harvest cheats are **not enabled by this fork**. Legacy code/API remains for upstream source compatibility but is not selected by the loader.
 
 Machines with completely independent processing loops need a shared-loop integration of their own; this is not a promise to speed up every mod in GTNH. This version targets GTNH **2.9.0 / GT5 5.09.54.265**. Do not assume compatibility with other pack versions.
 
 ## Verified locally
 
-GTNH 2.9.0 / GT5 5.09.54.265, headless Java 25: eight unit tests and the isolated native processing checks pass. Forge accepts a client mod map without CutCorners or `conditional_mixin`, while still rejecting a map missing required GregTech. The server starts without `conditional_mixin` installed; no classes in the built jar reference that library.
+GTNH 2.9.0 / GT5 5.09.54.265, headless Java 25: twelve unit tests and the isolated native processing checks pass. Forge accepts a client mod map without CutCorners or `conditional_mixin`, while still rejecting a map missing required GregTech. The server starts without `conditional_mixin` installed; no classes in the built jar reference that library.
 
 | Check | 1× | 5× | 10× |
 | --- | ---: | ---: | ---: |
@@ -87,7 +87,7 @@ progress advances by 1 or 5 while consuming the same 2 EU, and no progress is
 made without power. These multiblock checks stage controller state; they do
 not assemble their structures or test their complete resource-extraction
 throughput. All 43 registered extraction-family classes are also checked to
-keep non-mining extraction at its original rate.
+keep other world production at its original rate; runtime.6 adds the explicitly enabled pump families.
 
 Clock conversion preserves pending versus already-performed extraction when
 the multiplier changes. A saved interval is converted once and the tier's
@@ -99,6 +99,46 @@ To rerun these checks without restarting the isolated pack for each helper:
 python3 integration/run-coverage.py --work /tmp/cutc-runtime-test \
   --java /path/to/java25/bin/java --asm /path/to/asm-9.9.1.jar --run-native
 ```
+
+## Pumps in runtime.6
+
+`pumping=true` independently enables GT basic pumps and underground oil/fluid
+drills at the configured multiplier. It does not enable steam water generation,
+orbital pumps, industrial bees, world farming or fishing.
+
+Basic pumps have a separate native action timer and charge EU per fluid block.
+The two countdown decrements (self and stacked-pump boost) advance by the
+multiplier; fluid quantity, radius, permission checks, power and tank-space
+checks remain native. Successful fluid actions cost native EU divided by the
+multiplier, with per-pump fractional EU carried across normal world saves.
+Five LV source actions at 5× cost `12+13+13+13+13 = 64 EU` instead of `320 EU`.
+This preserves the average operating consumption when the action period divides
+exactly. The conservative power gate rounds up and never starts at zero EU.
+Flowing-fluid removal keeps its native quarter-cost/quarter-time behavior.
+Queue-discovery/maintenance scans are not replayed five times.
+
+All three registered basic-pump tiers pass actual lava-source removal and fluid
+output tests in an isolated world:
+
+| Pump | 1× interval | 5× interval | EU for 5000 mB, 1× / 5× |
+| --- | ---: | ---: | ---: |
+| LV | 80 ticks | 16 ticks | 320 / 64 |
+| MV | 40 ticks | 8 ticks | 1280 / 256 |
+| HV | 20 ticks | 4 ticks | 5120 / 1024 |
+
+Water, flowing lava, feature/global/GT disable, insufficient power, stopped and
+full-output states also pass. Pipe descent changes from 100 to 20 ticks and
+retraction from 5 to 1 tick at 5×; pipe item counts stay unchanged. Stacked-pump
+boost and NBT fractional carry pass. The minimum interval is one real tick,
+and at most one fluid block is consumed by a pump per real tick; extreme
+multipliers therefore need not achieve an exact throughput multiple.
+
+All six registered underground oil/fluid drill implementations pass native
+productive-loop probes at 1×/5×, disabled modes and no power. They retain their
+original EU/t. These drill probes stage the controller and power hatches; they
+do not physically assemble the structure or measure underground-field depletion.
+The full prior processing/mining regression suite passes, and all 187,204 GT
+recipe rows remain unchanged. [Current results and limits](integration/verified-runtime.6-2.9.0.json).
 
 The audit tools are separate from runtime code:
 
@@ -121,6 +161,7 @@ general {
     B:furnaces=true
     B:railcraft=true
     B:mining=true
+    B:pumping=true
     B:otherMachines=true
     S:recipeMapBlacklist <
         gg.recipe.naquadah_reactor
@@ -138,10 +179,10 @@ Edit this file, then run `/cutcorners reload` as an operator (or `cutcorners rel
 ```sh
 ./gradlew test build
 # Optional: use installed Temurin toolchains instead of upstream Azul defaults:
-./gradlew -PbuildJvmVendor=adoptium test build
+./gradlew --no-configuration-cache -PbuildJvmVendor=adoptium test build
 ```
 
-The project uses Java 25 for compilation and the upstream multi-release Java 8/21/25 packaging. Java 8 is also required by the Minecraft development tooling. `buildJvmVendor` is optional and does not change the default upstream CI toolchain.
+The project uses Java 25 for compilation and the upstream multi-release Java 8/21/25 packaging. Java 8 is also required by the Minecraft development tooling. `buildJvmVendor` is optional and does not change the default upstream CI toolchain. With cached JDK 25/8 installations, `--no-configuration-cache` avoids resolving an unused JST task's Java 21 toolchain during cache serialization.
 
 `integration/run-local.py` copies a supplied GTNH server template to a fresh directory, binds only loopback on an ephemeral port and creates a fresh flat test world. It refuses to overwrite a directory or silently accept the EULA. Use `--accept-eula` only after agreeing to the Minecraft EULA. It never connects to or changes your production server.
 

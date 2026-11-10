@@ -151,7 +151,7 @@ public final class MiningChecks extends NativeChecks {
     }
     public static void run(String output) throws Exception {
         Map<String,Object> r=new LinkedHashMap<String,Object>();Class<?> cfg=c("cn.elytra.gtnh.cutcorners.config.RuntimeConfig");
-        Map<Field,Object> saved=new LinkedHashMap<Field,Object>();for(String n:new String[]{"enabled","gregTech","mining","multiplier"}){Field f=cfg.getField(n);saved.put(f,f.get(null));}
+        Map<Field,Object> saved=new LinkedHashMap<Field,Object>();for(String n:new String[]{"enabled","gregTech","mining","pumping","multiplier"}){Field f=cfg.getField(n);saved.put(f,f.get(null));}
         try {
             snapshot();List<Object> basic=new ArrayList<Object>();r.put("basic_miners",basic);
             for(int tier=1;tier<=3;tier++)for(int speed:new int[]{1,5})basic.add(basic(tier,speed,"normal"));
@@ -167,14 +167,15 @@ public final class MiningChecks extends NativeChecks {
                 multi.add(multiClock(type,5,false));
             }
             r.put("multiblock_native_progress",multi);r.put("status","passed");
-            cfg.getField("multiplier").setInt(null,5);
+            cfg.getField("multiplier").setInt(null,5);cfg.getField("pumping").setBoolean(null,true);
             Class<?> runtime=c("cn.elytra.gtnh.cutcorners.runtime.RuntimeProgress");
             Field extracted=runtime.getDeclaredField("EXTRACTION_CLASS"),mined=runtime.getDeclaredField("MINER_CLASS");extracted.setAccessible(true);mined.setAccessible(true);
             ClassValue<?> extraction=(ClassValue<?>)extracted.get(null),miners=(ClassValue<?>)mined.get(null);
             List<Object> policies=new ArrayList<Object>();Set<Class<?>> seen=new HashSet<Class<?>>();
             for(Object m:(Object[])get(c("gregtech.api.GregTechAPI"),"METATILEENTITIES")) {
                 if(m==null||!seen.add(m.getClass())||!Boolean.TRUE.equals(extraction.get(m.getClass())))continue;
-                int expected=Boolean.TRUE.equals(miners.get(m.getClass()))&&!c("gregtech.common.tileentities.machines.basic.MTEMiner").isInstance(m)?5:1;
+                boolean pump=c("gregtech.common.tileentities.machines.basic.MTEPump").isInstance(m)||c("gregtech.common.tileentities.machines.multi.MTEOilDrillBase").isInstance(m);
+                int expected=pump||(Boolean.TRUE.equals(miners.get(m.getClass()))&&!c("gregtech.common.tileentities.machines.basic.MTEMiner").isInstance(m))?5:1;
                 int actual=(Integer)runtime.getMethod("increment",Object.class,int.class,int.class).invoke(null,m,10,200);
                 check(actual==expected,"Mining/extraction scope changed unexpectedly "+m.getClass());
                 Map<String,Object> row=new LinkedHashMap<String,Object>();row.put("class",m.getClass().getName());row.put("step",actual);policies.add(row);

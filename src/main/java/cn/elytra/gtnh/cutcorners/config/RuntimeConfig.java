@@ -31,10 +31,15 @@ public final class RuntimeConfig {
     @Config.Reloadable("runtime")
     public static boolean railcraft;
 
-    @Config.Comment("Accelerate GT basic/ore-drilling/void/orbital miners. Pumps and oil drills remain unchanged.")
+    @Config.Comment("Accelerate GT basic/ore-drilling/void/orbital miners.")
     @Config.DefaultBoolean(true)
     @Config.Reloadable("runtime")
     public static boolean mining;
+
+    @Config.Comment("Accelerate GT basic pumps and underground oil/fluid drills. Basic pumps divide action EU by the multiplier with persistent fractional carry; oil drills keep native EU/t.")
+    @Config.DefaultBoolean(true)
+    @Config.Reloadable("runtime")
+    public static boolean pumping;
 
     @Config.Comment("Recipe-processing adapters for IC2, EnderIO, Forestry and Thaumcraft. Not world production.")
     @Config.DefaultBoolean(true)

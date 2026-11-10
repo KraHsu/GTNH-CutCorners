@@ -39,6 +39,12 @@ public final class RuntimeProgress {
         "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlantBase",
         "bwcrossmod.galacticgreg.MTEVoidMinerBase",
         "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner"));
+    private static final java.util.Set<String> PUMPS = new java.util.HashSet<String>(java.util.Arrays.asList(
+        "gregtech.common.tileentities.machines.basic.MTEPump",
+        "gregtech.common.tileentities.machines.multi.MTEOilDrillBase"));
+    private static final ClassValue<Boolean> PUMP_CLASS = new ClassValue<Boolean>() {
+        @Override protected Boolean computeValue(Class<?> type) { return matches(type, PUMPS); }
+    };
     private static final ClassValue<Boolean> MINER_CLASS = new ClassValue<Boolean>() {
         @Override protected Boolean computeValue(Class<?> type) { return matches(type, MINERS); }
     };
@@ -75,6 +81,7 @@ public final class RuntimeProgress {
     }
     public static int otherSpeed() { return RuntimeConfig.otherMachines ? speed() : 1; }
     public static int miningSpeed() { return RuntimeConfig.mining ? processingSpeed() : 1; }
+    public static int pumpingSpeed() { return RuntimeConfig.pumping ? processingSpeed() : 1; }
     public static int miningDuration(int original) { return ProgressMath.duration(original, miningSpeed()); }
     /** The native delegate divides this value by five before using it as a modulo divisor. */
     public static int miningRetractionClock(Object owner, int original) {
@@ -89,6 +96,8 @@ public final class RuntimeProgress {
         if (machine instanceof MTEMiner) return 1;
         if (MINER_CLASS.get(machine.getClass())) {
             if (!RuntimeConfig.mining) return 1;
+        } else if (PUMP_CLASS.get(machine.getClass())) {
+            if (!RuntimeConfig.pumping) return 1;
         } else if (EXTRACTION_CLASS.get(machine.getClass())) return 1;
         // Purification's controller and native unit phases share a separate
         // accelerated clock; do not also apply the common counter adapter.

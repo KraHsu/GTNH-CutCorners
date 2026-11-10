@@ -60,6 +60,7 @@ tasks.test {
     // GTNHGradle 2.0.26's downgraded FileCollection is not a class-root
     // directory for Gradle 9.4 (silently yields NO-SOURCE). Test native
     // compiled classes with the project JDK; the isolated pack checks the jar.
+    javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
     testClassesDirs = sourceSets.test.get().output.classesDirs
     classpath = sourceSets.test.get().runtimeClasspath
     useJUnitPlatform()

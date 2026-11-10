@@ -21,11 +21,11 @@ assert (work/'checks/ready').exists(), 'Start the isolated pack with run-local.p
 assert not (work/'checks/request.properties').exists(), 'Another helper request is pending'
 build = work/'coverage-classes'
 build.mkdir(exist_ok=True)
-names = ['NativeChecks', 'CoverageRuntimeChecks', 'CoverageFixChecks', 'CoverageExtraChecks', 'CoveragePipelineChecks', 'CoverageAdapterChecks', 'MiningChecks']
+names = ['NativeChecks', 'CoverageRuntimeChecks', 'CoverageFixChecks', 'CoverageExtraChecks', 'CoveragePipelineChecks', 'CoverageAdapterChecks', 'MiningChecks', 'PumpChecks']
 subprocess.run([str(args.java.resolve().with_name('javac')), '--release', '8', '-Xlint:-options', '-cp', str(args.asm.resolve()), '-d', str(build)] + [str(source/(name+'.java')) for name in names], check=True)
 helper = work/'coverage-suite.jar'
 subprocess.run([str(args.java.resolve().with_name('jar')), 'cf', str(helper), '-C', str(build), '.'], check=True)
-checks = ['CoverageFixChecks', 'CoverageExtraChecks', 'CoveragePipelineChecks', 'CoverageAdapterChecks', 'MiningChecks']
+checks = ['CoverageFixChecks', 'CoverageExtraChecks', 'CoveragePipelineChecks', 'CoverageAdapterChecks', 'MiningChecks', 'PumpChecks']
 if args.run_native:
     checks.append('NativeChecks')
 results = {}

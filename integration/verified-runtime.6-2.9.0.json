@@ -1,0 +1,3228 @@
+{
+  "version": "v1.4.0-runtime.6",
+  "GTNH": "2.9.0",
+  "Java": 25,
+  "jar": "CutCorners-v1.4.0-runtime.6+2.9.0.jar",
+  "sha256": "ea0842370d6887e93fa76fc6802838fa2a96323cdbfd90aa8ce52d780988d329",
+  "bytes": 215092,
+  "unit_tests": 12,
+  "recipe_snapshot": {
+    "unchanged": true,
+    "rows": 187204,
+    "sha256": "88fa6608ee9cb7ef45b3c5d61b5d28c85d43079d199ff8aa04569189e3bcf8f1"
+  },
+  "native_checks": {
+    "CoverageFixChecks": {
+      "mining_and_pumping_disabled_for_legacy_scope_checks": true,
+      "network": {
+        "conditional_mixin_absent_from_server": true,
+        "client_omits": [
+          "CutCorners",
+          "conditional_mixin",
+          "runtimecompatchecks"
+        ],
+        "cutcorners_accepts_missing_client_mod": true,
+        "all_registered_server_checkers_rejected": [],
+        "missing_gregtech_still_rejected": true
+      },
+      "fusion": [
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer1",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer1",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer2",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer2",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer3",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEFusionComputer3",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer1",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer1",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer2",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer2",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer3",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer3",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer4",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer4",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer5",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTELargeFusionComputer5",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk4",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk4",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        },
+        {
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk5",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "energy_spent": 2
+        },
+        {
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvFusionMk5",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "energy_spent": 2
+        }
+      ],
+      "target": [
+        {
+          "class": "gtnhlanth.common.tileentity.MTETargetChamber",
+          "multiplier": 1,
+          "progress_delta": 1,
+          "scope": "native no-beam-required branch; not a full assembled recipe"
+        },
+        {
+          "class": "gtnhlanth.common.tileentity.MTETargetChamber",
+          "multiplier": 5,
+          "progress_delta": 5,
+          "scope": "native no-beam-required branch; not a full assembled recipe"
+        }
+      ],
+      "thermal": [
+        {
+          "multiplier": 1,
+          "controller_cycle_ticks": 2400,
+          "real_cycle_ticks": 2400,
+          "thermal_cycles_completed": 4,
+          "temperature": 0,
+          "state": "Heating",
+          "plasma_litres": 400,
+          "coolant_litres": 8000,
+          "scope": "native thermal phase with replenished fixture hatches; no physical plant or power controller assembly"
+        },
+        {
+          "multiplier": 5,
+          "controller_cycle_ticks": 2400,
+          "real_cycle_ticks": 480,
+          "thermal_cycles_completed": 4,
+          "temperature": 0,
+          "state": "Heating",
+          "plasma_litres": 400,
+          "coolant_litres": 8000,
+          "scope": "native thermal phase with replenished fixture hatches; no physical plant or power controller assembly"
+        }
+      ],
+      "scope": [
+        {
+          "class": "gregtech.common.tileentities.machines.basic.MTEMiner",
+          "multiplier": 5,
+          "configured_progress_step": 1,
+          "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.basic.MTEPump",
+          "multiplier": 5,
+          "configured_progress_step": 1,
+          "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+          "multiplier": 5,
+          "configured_progress_step": 1,
+          "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+          "multiplier": 5,
+          "configured_progress_step": 1,
+          "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.steam.MTESteamWaterPump",
+          "multiplier": 5,
+          "configured_progress_step": 1,
+          "scope": "runtime policy on a staged working machine; not a world-extraction throughput test"
+        }
+      ],
+      "heatExchangers": [
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEHeatExchanger",
+          "positive_thermal_power": 100,
+          "multiplier": 5,
+          "progress_step": 5,
+          "scope": "runtime filtering with positive mEUt used by native heat-exchanger processing; no full fluid/steam plant test"
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTEExtremeHeatExchanger",
+          "positive_thermal_power": 100,
+          "multiplier": 5,
+          "progress_step": 5,
+          "scope": "runtime filtering with positive mEUt used by native heat-exchanger processing; no full fluid/steam plant test"
+        },
+        {
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvHeatExchanger",
+          "positive_thermal_power": 100,
+          "multiplier": 5,
+          "progress_step": 5,
+          "scope": "runtime filtering with positive mEUt used by native heat-exchanger processing; no full fluid/steam plant test"
+        }
+      ],
+      "status": "passed"
+    },
+    "CoverageExtraChecks": {
+      "ic2": [
+        {
+          "speed": 1,
+          "powered": true,
+          "progress_delta": 1,
+          "energy_after": 9998.0
+        },
+        {
+          "speed": 1,
+          "powered": false,
+          "progress_delta": 0,
+          "energy_after": 0.0
+        },
+        {
+          "speed": 5,
+          "powered": true,
+          "progress_delta": 5,
+          "energy_after": 9998.0
+        },
+        {
+          "speed": 5,
+          "powered": false,
+          "progress_delta": 0,
+          "energy_after": 0.0
+        }
+      ],
+      "enderIO": [
+        {
+          "speed": 1,
+          "powered": true,
+          "actual_rf_used": 10,
+          "task_work": 10.0
+        },
+        {
+          "speed": 1,
+          "powered": false,
+          "actual_rf_used": 0,
+          "task_work": 0.0
+        },
+        {
+          "speed": 5,
+          "powered": true,
+          "actual_rf_used": 10,
+          "task_work": 50.0
+        },
+        {
+          "speed": 5,
+          "powered": false,
+          "actual_rf_used": 0,
+          "task_work": 0.0
+        }
+      ],
+      "bec": [
+        {
+          "speed": 1,
+          "mode": "running",
+          "before": 10,
+          "after": 11,
+          "condensate_consumed": 12,
+          "state": "Crafting"
+        },
+        {
+          "speed": 1,
+          "mode": "unpowered",
+          "before": 10,
+          "after": 10,
+          "condensate_consumed": 0,
+          "state": "Unpowered"
+        },
+        {
+          "speed": 1,
+          "mode": "no-nanites",
+          "before": 10,
+          "after": 10,
+          "condensate_consumed": 12,
+          "state": "Crafting"
+        },
+        {
+          "speed": 1,
+          "mode": "tier-gate",
+          "before": 18,
+          "after": 19,
+          "condensate_consumed": 12,
+          "state": "Crafting"
+        },
+        {
+          "speed": 1,
+          "mode": "pause-instant",
+          "before": 10,
+          "after": 10,
+          "condensate_consumed": 0,
+          "state": "PausedImmediate"
+        },
+        {
+          "speed": 1,
+          "mode": "pause-step",
+          "before": 18,
+          "after": 19,
+          "condensate_consumed": 12,
+          "state": "Crafting"
+        },
+        {
+          "speed": 5,
+          "mode": "running",
+          "before": 10,
+          "after": 15,
+          "condensate_consumed": 12,
+          "state": "Crafting"
+        },
+        {
+          "speed": 5,
+          "mode": "unpowered",
+          "before": 10,
+          "after": 10,
+          "condensate_consumed": 0,
+          "state": "Unpowered"
+        },
+        {
+          "speed": 5,
+          "mode": "no-nanites",
+          "before": 10,
+          "after": 10,
+          "condensate_consumed": 12,
+          "state": "Crafting"
+        },
+        {
+          "speed": 5,
+          "mode": "tier-gate",
+          "before": 18,
+          "after": 20,
+          "condensate_consumed": 12,
+          "state": "NaniteTierTooLow"
+        },
+        {
+          "speed": 5,
+          "mode": "pause-instant",
+          "before": 10,
+          "after": 10,
+          "condensate_consumed": 0,
+          "state": "PausedImmediate"
+        },
+        {
+          "speed": 5,
+          "mode": "pause-step",
+          "before": 18,
+          "after": 20,
+          "condensate_consumed": 12,
+          "state": "PausedStep"
+        }
+      ],
+      "status": "passed"
+    },
+    "CoveragePipelineChecks": {
+      "purification": [
+        {
+          "speed": 1,
+          "migrated_from_480_tick_cycle": false,
+          "unit_map_blacklisted": false,
+          "controller_progress": 11,
+          "unit_progress": 11,
+          "unit_phase_speed": 1
+        },
+        {
+          "speed": 1,
+          "migrated_from_480_tick_cycle": true,
+          "unit_map_blacklisted": false,
+          "controller_progress": 601,
+          "unit_progress": 601,
+          "unit_phase_speed": 1
+        },
+        {
+          "speed": 1,
+          "migrated_from_480_tick_cycle": false,
+          "unit_map_blacklisted": true,
+          "controller_progress": 11,
+          "unit_progress": 11,
+          "unit_phase_speed": 1
+        },
+        {
+          "speed": 5,
+          "migrated_from_480_tick_cycle": false,
+          "unit_map_blacklisted": false,
+          "controller_progress": 15,
+          "unit_progress": 15,
+          "unit_phase_speed": 5
+        },
+        {
+          "speed": 5,
+          "migrated_from_480_tick_cycle": true,
+          "unit_map_blacklisted": false,
+          "controller_progress": 605,
+          "unit_progress": 605,
+          "unit_phase_speed": 5
+        },
+        {
+          "speed": 5,
+          "migrated_from_480_tick_cycle": false,
+          "unit_map_blacklisted": true,
+          "controller_progress": 11,
+          "unit_progress": 11,
+          "unit_phase_speed": 1
+        }
+      ],
+      "UV": [
+        {
+          "speed": 1,
+          "wait_after_native_call": 99
+        },
+        {
+          "speed": 5,
+          "wait_after_native_call": 95
+        }
+      ],
+      "heatExchangers": [
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEHeatExchanger",
+          "speed": 1,
+          "real_ticks": 20,
+          "batches_started": 1,
+          "cold_output": 1000,
+          "steam_output": 80000,
+          "distilled_water": 500
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEHeatExchanger",
+          "speed": 5,
+          "real_ticks": 20,
+          "batches_started": 5,
+          "cold_output": 5000,
+          "steam_output": 80000,
+          "distilled_water": 500
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTEExtremeHeatExchanger",
+          "speed": 1,
+          "real_ticks": 20,
+          "batches_started": 1,
+          "cold_output": 1000,
+          "steam_output": 80000,
+          "distilled_water": 500
+        },
+        {
+          "class": "goodgenerator.blocks.tileEntity.MTEExtremeHeatExchanger",
+          "speed": 5,
+          "real_ticks": 20,
+          "batches_started": 5,
+          "cold_output": 5000,
+          "steam_output": 80000,
+          "distilled_water": 500
+        },
+        {
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvHeatExchanger",
+          "speed": 1,
+          "real_ticks": 20,
+          "batches_started": 1,
+          "cold_output": 1000,
+          "steam_output": 160000,
+          "distilled_water": 1000
+        },
+        {
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.advanced.MTEAdvHeatExchanger",
+          "speed": 5,
+          "real_ticks": 20,
+          "batches_started": 5,
+          "cold_output": 5000,
+          "steam_output": 160000,
+          "distilled_water": 1000
+        }
+      ],
+      "status": "passed"
+    },
+    "CoverageAdapterChecks": {
+      "mining_and_pumping_disabled_for_legacy_scope_checks": true,
+      "one": [
+        {
+          "class": "mods.railcraft.common.blocks.machine.alpha.TileRockCrusher",
+          "speed": 1,
+          "step": 1,
+          "reset": 0
+        },
+        {
+          "class": "mods.railcraft.common.blocks.machine.alpha.TileRollingMachine",
+          "speed": 1,
+          "step": 1,
+          "reset": 0
+        },
+        "Steam oven duration=256 (native 16-tick polling retained)",
+        "Steam oven actual prepaid steam=8000",
+        "TileCarpenter work step=1",
+        "TileCentrifuge work step=1",
+        "TileFermenter work step=1",
+        "TileSqueezer work step=1",
+        "TileStill work step=1",
+        "TileFabricator work step=1",
+        "TileBottler work step=1",
+        "Moistener countdown=99",
+        "Thaumcraft centrifuge decrement=1",
+        "Infusion interval=10",
+        "Induction step=1, reset=0"
+      ],
+      "five": [
+        {
+          "class": "mods.railcraft.common.blocks.machine.alpha.TileRockCrusher",
+          "speed": 5,
+          "step": 5,
+          "reset": 0
+        },
+        {
+          "class": "mods.railcraft.common.blocks.machine.alpha.TileRollingMachine",
+          "speed": 5,
+          "step": 5,
+          "reset": 0
+        },
+        "Steam oven duration=52 (native 16-tick polling retained)",
+        "Steam oven actual prepaid steam=1600",
+        "TileCarpenter work step=5",
+        "TileCentrifuge work step=5",
+        "TileFermenter work step=5",
+        "TileSqueezer work step=5",
+        "TileStill work step=5",
+        "TileFabricator work step=5",
+        "TileBottler work step=5",
+        "Moistener countdown=95",
+        "Thaumcraft centrifuge decrement=5",
+        "Infusion interval=2",
+        "Induction step=5, reset=0"
+      ],
+      "disabled": [
+        {
+          "class": "mods.railcraft.common.blocks.machine.alpha.TileRockCrusher",
+          "speed": 1,
+          "step": 1,
+          "reset": 0
+        },
+        {
+          "class": "mods.railcraft.common.blocks.machine.alpha.TileRollingMachine",
+          "speed": 1,
+          "step": 1,
+          "reset": 0
+        },
+        "Steam oven duration=256 (native 16-tick polling retained)",
+        "Steam oven actual prepaid steam=8000",
+        "TileCarpenter work step=1",
+        "TileCentrifuge work step=1",
+        "TileFermenter work step=1",
+        "TileSqueezer work step=1",
+        "TileStill work step=1",
+        "TileFabricator work step=1",
+        "TileBottler work step=1",
+        "Moistener countdown=99",
+        "Thaumcraft centrifuge decrement=1",
+        "Infusion interval=10",
+        "Induction step=1, reset=0"
+      ],
+      "excluded_registered_classes": [
+        "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+        "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+        "gregtech.common.tileentities.machines.multi.MTEConcreteBackfiller1",
+        "gregtech.common.tileentities.machines.multi.MTEConcreteBackfiller2",
+        "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+        "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+        "gregtech.common.tileentities.machines.basic.MTEMiner",
+        "gregtech.common.tileentities.machines.basic.MTEPump",
+        "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+        "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+        "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant2",
+        "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant3",
+        "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant4",
+        "gregtech.common.tileentities.machines.basic.MTEIndustrialApiary",
+        "bartworks.common.tileentities.multis.MTEDeepEarthHeatingPump",
+        "bwcrossmod.galacticgreg.MTEVoidMiners$VMUV",
+        "bwcrossmod.galacticgreg.MTEVoidMiners$VMZPM",
+        "bwcrossmod.galacticgreg.MTEVoidMiners$VMLUV",
+        "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT1",
+        "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT2",
+        "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT3",
+        "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModulePump$TileEntityModulePumpT1",
+        "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModulePump$TileEntityModulePumpT2",
+        "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModulePump$TileEntityModulePumpT3",
+        "kubatech.tileentity.gregtech.multiblock.MTEMegaIndustrialApiary",
+        "gregtech.common.tileentities.machines.multi.MTEIndustrialFishingPond",
+        "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$LV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$MV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$HV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$EV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$IV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$LuV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$ZPM",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UHV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UEV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UIV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UMV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UXV",
+        "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$MAX",
+        "com.gtnewhorizon.cropsnh.tileentity.multi.MTEIndustrialFarm",
+        "gregtech.common.tileentities.machines.multi.steam.MTESteamWaterPump"
+      ],
+      "status": "passed"
+    },
+    "MiningChecks": {
+      "basic_miners": [
+        {
+          "tier": 1,
+          "speed": 1,
+          "mode": "normal",
+          "native_duration": 160,
+          "duration": 160,
+          "extraction_ticks": [
+            160,
+            320,
+            480,
+            640
+          ],
+          "real_ticks": 640,
+          "energy_spent": 5120,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "normal",
+          "native_duration": 160,
+          "duration": 32,
+          "extraction_ticks": [
+            32,
+            64,
+            96,
+            128
+          ],
+          "real_ticks": 128,
+          "energy_spent": 1024,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 2,
+          "speed": 1,
+          "mode": "normal",
+          "native_duration": 80,
+          "duration": 80,
+          "extraction_ticks": [
+            80,
+            160,
+            240,
+            320
+          ],
+          "real_ticks": 320,
+          "energy_spent": 10240,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 2,
+          "speed": 5,
+          "mode": "normal",
+          "native_duration": 80,
+          "duration": 16,
+          "extraction_ticks": [
+            16,
+            32,
+            48,
+            64
+          ],
+          "real_ticks": 64,
+          "energy_spent": 2048,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 3,
+          "speed": 1,
+          "mode": "normal",
+          "native_duration": 40,
+          "duration": 40,
+          "extraction_ticks": [
+            40,
+            80,
+            120,
+            160
+          ],
+          "real_ticks": 160,
+          "energy_spent": 20480,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 3,
+          "speed": 5,
+          "mode": "normal",
+          "native_duration": 40,
+          "duration": 8,
+          "extraction_ticks": [
+            8,
+            16,
+            24,
+            32
+          ],
+          "real_ticks": 32,
+          "energy_spent": 4096,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "off",
+          "native_duration": 160,
+          "duration": 160,
+          "extraction_ticks": [
+            160,
+            320,
+            480,
+            640
+          ],
+          "real_ticks": 640,
+          "energy_spent": 5120,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "disabled",
+          "native_duration": 160,
+          "duration": 160,
+          "extraction_ticks": [
+            160,
+            320,
+            480,
+            640
+          ],
+          "real_ticks": 640,
+          "energy_spent": 5120,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "gtechoff",
+          "native_duration": 160,
+          "duration": 160,
+          "extraction_ticks": [
+            160,
+            320,
+            480,
+            640
+          ],
+          "real_ticks": 640,
+          "energy_spent": 5120,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "unpowered",
+          "native_duration": 160,
+          "duration": 0,
+          "extraction_ticks": [],
+          "real_ticks": 340,
+          "energy_spent": 0,
+          "outputs": {},
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "blocked",
+          "native_duration": 160,
+          "duration": 0,
+          "extraction_ticks": [],
+          "real_ticks": 340,
+          "energy_spent": 0,
+          "outputs": {},
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "missing",
+          "native_duration": 160,
+          "duration": 0,
+          "extraction_ticks": [],
+          "real_ticks": 340,
+          "energy_spent": 256,
+          "outputs": {},
+          "pipes_remaining": 0
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "descent",
+          "native_duration": 160,
+          "duration": 32,
+          "extraction_ticks": [],
+          "real_ticks": 32,
+          "energy_spent": 256,
+          "outputs": {
+            "minecraft:cobblestone:0x1[null]; ": 1
+          },
+          "pipes_remaining": 3
+        },
+        {
+          "tier": 1,
+          "speed": 1,
+          "mode": "switch",
+          "native_duration": 160,
+          "duration": 32,
+          "extraction_ticks": [
+            95,
+            127,
+            159,
+            191
+          ],
+          "real_ticks": 191,
+          "energy_spent": 1528,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 3,
+          "speed": 1000,
+          "mode": "normal",
+          "native_duration": 40,
+          "duration": 1,
+          "extraction_ticks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "real_ticks": 4,
+          "energy_spent": 512,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "switchback",
+          "native_duration": 160,
+          "duration": 160,
+          "extraction_ticks": [
+            32,
+            192,
+            352,
+            512
+          ],
+          "real_ticks": 512,
+          "energy_spent": 4096,
+          "outputs": {
+            "minecraft:iron_ore:0x1[null]; ": 4
+          },
+          "pipes_remaining": 4
+        }
+      ],
+      "retraction": [
+        {
+          "tier": 3,
+          "speed": 1,
+          "events": [
+            8,
+            16,
+            24,
+            32
+          ],
+          "returned_pipes": 4
+        },
+        {
+          "tier": 3,
+          "speed": 5,
+          "events": [
+            2,
+            4,
+            6,
+            8
+          ],
+          "returned_pipes": 4
+        },
+        {
+          "tier": 3,
+          "speed": 1000,
+          "events": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "returned_pipes": 4
+        }
+      ],
+      "multiblock_native_progress": [
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+          "speed": 1,
+          "powered": true,
+          "progress": 1,
+          "EU_spent": 2,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+          "speed": 5,
+          "powered": true,
+          "progress": 5,
+          "EU_spent": 2,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+          "speed": 5,
+          "powered": false,
+          "progress": 0,
+          "EU_spent": 0,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "bwcrossmod.galacticgreg.MTEVoidMiners$VMUV",
+          "speed": 1,
+          "powered": true,
+          "progress": 1,
+          "EU_spent": 2,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "bwcrossmod.galacticgreg.MTEVoidMiners$VMUV",
+          "speed": 5,
+          "powered": true,
+          "progress": 5,
+          "EU_spent": 2,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "bwcrossmod.galacticgreg.MTEVoidMiners$VMUV",
+          "speed": 5,
+          "powered": false,
+          "progress": 0,
+          "EU_spent": 0,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT1",
+          "speed": 1,
+          "powered": true,
+          "progress": 1,
+          "EU_spent": 2,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT1",
+          "speed": 5,
+          "powered": true,
+          "progress": 5,
+          "EU_spent": 2,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT1",
+          "speed": 5,
+          "powered": false,
+          "progress": 0,
+          "EU_spent": 0,
+          "scope": "native productive processing tick; physical structure and world extraction are not exercised for this multiblock"
+        }
+      ],
+      "status": "passed",
+      "registered_extraction_policy_with_mining_enabled": [
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEConcreteBackfiller1",
+          "step": 1
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEConcreteBackfiller2",
+          "step": 1
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.basic.MTEMiner",
+          "step": 1
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.basic.MTEPump",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant1",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant2",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant3",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOreDrillingPlant4",
+          "step": 5
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.basic.MTEIndustrialApiary",
+          "step": 1
+        },
+        {
+          "class": "bartworks.common.tileentities.multis.MTEDeepEarthHeatingPump",
+          "step": 1
+        },
+        {
+          "class": "bwcrossmod.galacticgreg.MTEVoidMiners$VMUV",
+          "step": 5
+        },
+        {
+          "class": "bwcrossmod.galacticgreg.MTEVoidMiners$VMZPM",
+          "step": 5
+        },
+        {
+          "class": "bwcrossmod.galacticgreg.MTEVoidMiners$VMLUV",
+          "step": 5
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT1",
+          "step": 5
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT2",
+          "step": 5
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModuleMiner$TileEntityModuleMinerT3",
+          "step": 5
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModulePump$TileEntityModulePumpT1",
+          "step": 1
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModulePump$TileEntityModulePumpT2",
+          "step": 1
+        },
+        {
+          "class": "gtnhintergalactic.tile.multi.elevatormodules.TileEntityModulePump$TileEntityModulePumpT3",
+          "step": 1
+        },
+        {
+          "class": "kubatech.tileentity.gregtech.multiblock.MTEMegaIndustrialApiary",
+          "step": 1
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialFishingPond",
+          "step": 1
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+          "step": 5
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$LV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$MV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$HV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$EV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$IV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$LuV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$ZPM",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UHV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UEV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UIV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UMV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$UXV",
+          "step": 1
+        },
+        {
+          "class": "com.sinthoras.hydroenergy.blocks.HEHydroPumpTileEntity$MAX",
+          "step": 1
+        },
+        {
+          "class": "com.gtnewhorizon.cropsnh.tileentity.multi.MTEIndustrialFarm",
+          "step": 1
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.steam.MTESteamWaterPump",
+          "step": 1
+        }
+      ]
+    },
+    "PumpChecks": {
+      "basic_pumps": [
+        {
+          "tier": 1,
+          "speed": 1,
+          "mode": "normal",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 80,
+          "extraction_ticks": [
+            1,
+            81,
+            161,
+            241,
+            321
+          ],
+          "action_EU": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "total_EU": 320,
+          "output_mB": 5000
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "normal",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 16,
+          "extraction_ticks": [
+            1,
+            17,
+            33,
+            49,
+            65
+          ],
+          "action_EU": [
+            12,
+            13,
+            13,
+            13,
+            13
+          ],
+          "total_EU": 64,
+          "output_mB": 5000
+        },
+        {
+          "tier": 2,
+          "speed": 1,
+          "mode": "normal",
+          "fluid": "lava",
+          "native_interval": 40,
+          "effective_interval": 40,
+          "extraction_ticks": [
+            1,
+            41,
+            81,
+            121,
+            161
+          ],
+          "action_EU": [
+            256,
+            256,
+            256,
+            256,
+            256
+          ],
+          "total_EU": 1280,
+          "output_mB": 5000
+        },
+        {
+          "tier": 2,
+          "speed": 5,
+          "mode": "normal",
+          "fluid": "lava",
+          "native_interval": 40,
+          "effective_interval": 8,
+          "extraction_ticks": [
+            1,
+            9,
+            17,
+            25,
+            33
+          ],
+          "action_EU": [
+            51,
+            51,
+            51,
+            51,
+            52
+          ],
+          "total_EU": 256,
+          "output_mB": 5000
+        },
+        {
+          "tier": 3,
+          "speed": 1,
+          "mode": "normal",
+          "fluid": "lava",
+          "native_interval": 20,
+          "effective_interval": 20,
+          "extraction_ticks": [
+            1,
+            21,
+            41,
+            61,
+            81
+          ],
+          "action_EU": [
+            1024,
+            1024,
+            1024,
+            1024,
+            1024
+          ],
+          "total_EU": 5120,
+          "output_mB": 5000
+        },
+        {
+          "tier": 3,
+          "speed": 5,
+          "mode": "normal",
+          "fluid": "lava",
+          "native_interval": 20,
+          "effective_interval": 4,
+          "extraction_ticks": [
+            1,
+            5,
+            9,
+            13,
+            17
+          ],
+          "action_EU": [
+            204,
+            205,
+            205,
+            205,
+            205
+          ],
+          "total_EU": 1024,
+          "output_mB": 5000
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "normal",
+          "fluid": "water",
+          "native_interval": 80,
+          "effective_interval": 16,
+          "extraction_ticks": [
+            1,
+            17,
+            33,
+            49,
+            65
+          ],
+          "action_EU": [
+            12,
+            13,
+            13,
+            13,
+            13
+          ],
+          "total_EU": 64,
+          "output_mB": 5000
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "off",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 80,
+          "extraction_ticks": [
+            1,
+            81,
+            161,
+            241,
+            321
+          ],
+          "action_EU": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "total_EU": 320,
+          "output_mB": 5000
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "disabled",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 80,
+          "extraction_ticks": [
+            1,
+            81,
+            161,
+            241,
+            321
+          ],
+          "action_EU": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "total_EU": 320,
+          "output_mB": 5000
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "gtechoff",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 80,
+          "extraction_ticks": [
+            1,
+            81,
+            161,
+            241,
+            321
+          ],
+          "action_EU": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "total_EU": 320,
+          "output_mB": 5000
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "unpowered",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 16,
+          "extraction_ticks": [],
+          "action_EU": [],
+          "total_EU": 0,
+          "output_mB": 0
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "lowpower",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 16,
+          "extraction_ticks": [],
+          "action_EU": [],
+          "total_EU": 0,
+          "output_mB": 0
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "stopped",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 16,
+          "extraction_ticks": [],
+          "action_EU": [],
+          "total_EU": 0,
+          "output_mB": 0
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "full",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 16,
+          "extraction_ticks": [],
+          "action_EU": [],
+          "total_EU": 0,
+          "output_mB": 0
+        },
+        {
+          "tier": 1,
+          "speed": 5,
+          "mode": "flowing",
+          "fluid": "lava",
+          "native_interval": 20,
+          "effective_interval": 4,
+          "extraction_ticks": [
+            1,
+            5,
+            9,
+            13,
+            17
+          ],
+          "action_EU": [
+            3,
+            3,
+            3,
+            3,
+            4
+          ],
+          "total_EU": 16,
+          "output_mB": 0
+        },
+        {
+          "tier": 1,
+          "speed": 1000,
+          "mode": "normal",
+          "fluid": "lava",
+          "native_interval": 80,
+          "effective_interval": 1,
+          "extraction_ticks": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "action_EU": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total_EU": 0,
+          "output_mB": 5000
+        }
+      ],
+      "registered_pump_tiers": [
+        1,
+        2,
+        3
+      ],
+      "pipe_movement": [
+        {
+          "speed": 1,
+          "retract": false,
+          "first_action_tick": 100,
+          "pipe_count_changed_by": 1
+        },
+        {
+          "speed": 1,
+          "retract": true,
+          "first_action_tick": 5,
+          "pipe_count_changed_by": 1
+        },
+        {
+          "speed": 5,
+          "retract": false,
+          "first_action_tick": 20,
+          "pipe_count_changed_by": 1
+        },
+        {
+          "speed": 5,
+          "retract": true,
+          "first_action_tick": 1,
+          "pipe_count_changed_by": 1
+        },
+        {
+          "speed": 1000,
+          "retract": false,
+          "first_action_tick": 1,
+          "pipe_count_changed_by": 1
+        },
+        {
+          "speed": 1000,
+          "retract": true,
+          "first_action_tick": 1,
+          "pipe_count_changed_by": 1
+        }
+      ],
+      "saved_energy_carry": {
+        "saved_remainder": 4,
+        "first_action_EU": 12,
+        "after_load_action_EU": 13
+      },
+      "stacked": [
+        {
+          "speed": 1,
+          "lower_timer_after_upper_tick": 79,
+          "upper_extracts": false
+        },
+        {
+          "speed": 5,
+          "lower_timer_after_upper_tick": 75,
+          "upper_extracts": false
+        }
+      ],
+      "oil_drill_native_clock": [
+        {
+          "speed": 1,
+          "mode": "normal",
+          "drills": [
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+              "progress": 1,
+              "EU": 2
+            }
+          ]
+        },
+        {
+          "speed": 5,
+          "mode": "normal",
+          "drills": [
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+              "progress": 5,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+              "progress": 5,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+              "progress": 5,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+              "progress": 5,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+              "progress": 5,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+              "progress": 5,
+              "EU": 2
+            }
+          ]
+        },
+        {
+          "speed": 5,
+          "mode": "off",
+          "drills": [
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+              "progress": 1,
+              "EU": 2
+            }
+          ]
+        },
+        {
+          "speed": 5,
+          "mode": "disabled",
+          "drills": [
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+              "progress": 1,
+              "EU": 2
+            }
+          ]
+        },
+        {
+          "speed": 5,
+          "mode": "gtechoff",
+          "drills": [
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+              "progress": 1,
+              "EU": 2
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+              "progress": 1,
+              "EU": 2
+            }
+          ]
+        },
+        {
+          "speed": 5,
+          "mode": "unpowered",
+          "drills": [
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill2",
+              "progress": 0,
+              "EU": 0
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill3",
+              "progress": 0,
+              "EU": 0
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfiniteLegacy",
+              "progress": 0,
+              "EU": 0
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill4",
+              "progress": 0,
+              "EU": 0
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrill1",
+              "progress": 0,
+              "EU": 0
+            },
+            {
+              "class": "gregtech.common.tileentities.machines.multi.MTEOilDrillInfinite",
+              "progress": 0,
+              "EU": 0
+            }
+          ]
+        }
+      ],
+      "limits": "Real basic-pump source removal, fluid output and EU. Oil drills use native productive ticks; physical structure assembly, world oil depletion and every output-hatch topology are not exercised.",
+      "status": "passed"
+    },
+    "NativeChecks": {
+      "network": {
+        "conditional_mixin_absent_from_server": true,
+        "client_omits": [
+          "CutCorners",
+          "conditional_mixin",
+          "runtimecompatchecks"
+        ],
+        "cutcorners_accepts_missing_client_mod": true,
+        "all_registered_server_checkers_rejected": [],
+        "missing_gregtech_still_rejected": true
+      },
+      "recipe_maps": {
+        "bw.fuels.acidgens": 20,
+        "bw.recipe.BacteriaVat": 101,
+        "bw.recipe.biolab": 106,
+        "bw.recipe.cal": 71,
+        "bw.recipe.radhatch": 104,
+        "cropsnh.recipes.cropBreeder": 172,
+        "cropsnh.recipes.cropGeneExtractor": 716,
+        "cropsnh.recipes.cropSynthesizer": 179,
+        "cropsnh.recipes.seedGenerator": 223,
+        "gg.recipe.componentassemblyline": 142,
+        "gg.recipe.extreme_heat_exchanger": 110,
+        "gg.recipe.naquadah_fuel_refine_factory": 9,
+        "gg.recipe.naquadah_reactor": 9,
+        "gg.recipe.neutron_activator": 12,
+        "gg.recipe.precise_assembler": 24,
+        "gt.recipe.RTGgenerators": 5,
+        "gt.recipe.algae_pond": 16,
+        "gt.recipe.alloyblastsmelter": 372,
+        "gt.recipe.alloysmelter": 10356,
+        "gt.recipe.arcfurnace": 10108,
+        "gt.recipe.assemble-condensate": 113,
+        "gt.recipe.assembler": 10699,
+        "gt.recipe.autoclave": 323,
+        "gt.recipe.beamcrafter": 25,
+        "gt.recipe.blastfurnace": 2033,
+        "gt.recipe.brewer": 442,
+        "gt.recipe.cable": 3297,
+        "gt.recipe.canner": 4149,
+        "gt.recipe.cauldron": 860,
+        "gt.recipe.centrifuge": 1392,
+        "gt.recipe.chemicalbath": 707,
+        "gt.recipe.chemicaldehydrator": 87,
+        "gt.recipe.chemicalreactor": 1285,
+        "gt.recipe.circuitassembler": 264,
+        "gt.recipe.cokeoven": 8,
+        "gt.recipe.coldtrap": 2,
+        "gt.recipe.compressor": 1241,
+        "gt.recipe.craker": 85,
+        "gt.recipe.create-condensate": 19,
+        "gt.recipe.cuttingsaw": 9329,
+        "gt.recipe.cyclotron": 20,
+        "gt.recipe.dieselgeneratorfuel": 20,
+        "gt.recipe.distillationtower": 161,
+        "gt.recipe.distillery": 485,
+        "gt.recipe.efrblasting": 0,
+        "gt.recipe.efrsmelting": 0,
+        "gt.recipe.electricimplosioncompressor": 319,
+        "gt.recipe.electrolyzer": 417,
+        "gt.recipe.electromagneticseparator": 41,
+        "gt.recipe.entropic-processing": 0,
+        "gt.recipe.extractor": 357,
+        "gt.recipe.extrahugenaquadahreactor": 2,
+        "gt.recipe.extremedieselgeneratorfuel": 3,
+        "gt.recipe.extruder": 13457,
+        "gt.recipe.eyeofharmony": 43,
+        "gt.recipe.fakeAssemblylineProcess": 494,
+        "gt.recipe.fakecuttingsaw": 2562,
+        "gt.recipe.fakespaceprojects": 2,
+        "gt.recipe.fermenter": 45,
+        "gt.recipe.fishpond": 3,
+        "gt.recipe.fissionfuel": 5,
+        "gt.recipe.flotationcell": 12,
+        "gt.recipe.fluidchemicaleactor": 261,
+        "gt.recipe.fluidextractor": 11212,
+        "gt.recipe.fluidheater": 19,
+        "gt.recipe.fluidnaquadahreactor": 2,
+        "gt.recipe.fluidsolidifier": 28895,
+        "gt.recipe.fog_exotic": 2,
+        "gt.recipe.fog_molten": 2034,
+        "gt.recipe.fog_plasma": 220,
+        "gt.recipe.foundry_modules": 7,
+        "gt.recipe.furnace": 0,
+        "gt.recipe.fusionreactor": 68,
+        "gt.recipe.gasturbinefuel": 28,
+        "gt.recipe.hammer": 13016,
+        "gt.recipe.hugenaquadahreactor": 2,
+        "gt.recipe.ic2nuke": 33,
+        "gt.recipe.icecreammachine": 105,
+        "gt.recipe.implosioncompressor": 1140,
+        "gt.recipe.industrialchisel": 3683,
+        "gt.recipe.industrialcokeoven": 63,
+        "gt.recipe.isotope-decay": 4,
+        "gt.recipe.large_hadron_collider": 5,
+        "gt.recipe.largeboilerfakefuels": 76,
+        "gt.recipe.largechemicalreactor": 1376,
+        "gt.recipe.largenaquadahreactor": 2,
+        "gt.recipe.laserengraver": 1424,
+        "gt.recipe.lathe": 1192,
+        "gt.recipe.lftr": 3,
+        "gt.recipe.lftr.sparging": 3,
+        "gt.recipe.macerator": 24993,
+        "gt.recipe.magicfuels": 110,
+        "gt.recipe.massfab": 2,
+        "gt.recipe.matterfab2": 8,
+        "gt.recipe.metalbender": 3784,
+        "gt.recipe.microwave": 0,
+        "gt.recipe.mixer": 640,
+        "gt.recipe.moleculartransformer": 18,
+        "gt.recipe.multiblockrockbreaker": 8,
+        "gt.recipe.multicentrifuge": 1404,
+        "gt.recipe.multidehydrator": 88,
+        "gt.recipe.multielectro": 353,
+        "gt.recipe.multimixer": 636,
+        "gt.recipe.nanochip.assemblymatrix": 67,
+        "gt.recipe.nanochip.biologicalcoordinator": 4,
+        "gt.recipe.nanochip.boardprocessor": 14,
+        "gt.recipe.nanochip.conversion": 256,
+        "gt.recipe.nanochip.cuttingchamber": 29,
+        "gt.recipe.nanochip.encasementwrapper": 16,
+        "gt.recipe.nanochip.etchingarray": 9,
+        "gt.recipe.nanochip.opticalorganizer": 8,
+        "gt.recipe.nanochip.partprocessor": 20,
+        "gt.recipe.nanochip.superconductorsplitter": 7,
+        "gt.recipe.nanochip.wiretracer": 21,
+        "gt.recipe.nanoforge": 12,
+        "gt.recipe.neutroniumcompressor": 81,
+        "gt.recipe.nuclearsaltprocessingplant": 8,
+        "gt.recipe.oremill": 948,
+        "gt.recipe.orewasher": 680,
+        "gt.recipe.packager": 3226,
+        "gt.recipe.pcbfactory": 105,
+        "gt.recipe.plasmaforge": 78,
+        "gt.recipe.plasmageneratorfuels": 113,
+        "gt.recipe.polarizer": 209,
+        "gt.recipe.press": 440,
+        "gt.recipe.primitiveblastfurnace": 418,
+        "gt.recipe.printer": 5,
+        "gt.recipe.purificationplantclarifier": 1,
+        "gt.recipe.purificationplantdegasifier": 1,
+        "gt.recipe.purificationplantflocculation": 2,
+        "gt.recipe.purificationplantozonation": 4,
+        "gt.recipe.purificationplantphadjustment": 2,
+        "gt.recipe.purificationplantplasmaheating": 2,
+        "gt.recipe.purificationplantquarkextractor": 2,
+        "gt.recipe.purificationplantuvtreatment": 2,
+        "gt.recipe.pyro": 47,
+        "gt.recipe.quantumcomputer": 28,
+        "gt.recipe.quantumforcesmelter": 28,
+        "gt.recipe.reactorprocessingunit": 6,
+        "gt.recipe.replicator": 93,
+        "gt.recipe.researchStation": 304,
+        "gt.recipe.rockbreaker": 6,
+        "gt.recipe.rocketenginefuel": 4,
+        "gt.recipe.scanner": 310,
+        "gt.recipe.semifluidboilerfuels": 15,
+        "gt.recipe.semifluidgeneratorfuels": 17,
+        "gt.recipe.sifter": 128,
+        "gt.recipe.simplewasher": 1247,
+        "gt.recipe.smallnaquadahreactor": 2,
+        "gt.recipe.solarfactory": 54,
+        "gt.recipe.solartower": 1,
+        "gt.recipe.spaceAssembler": 41,
+        "gt.recipe.spaceMining": 232,
+        "gt.recipe.spaceResearch": 0,
+        "gt.recipe.thermalboiler": 4,
+        "gt.recipe.thermalcentrifuge": 693,
+        "gt.recipe.thermalgeneratorfuel": 5,
+        "gt.recipe.transcendentplasmamixerrecipes": 9,
+        "gt.recipe.treefarm": 251,
+        "gt.recipe.unpackager": 387,
+        "gt.recipe.upgrade_costs": 7,
+        "gt.recipe.uuamplifier": 2,
+        "gt.recipe.vacfurnace": 17,
+        "gt.recipe.vacuumfreezer": 317,
+        "gt.recipe.wiremill": 1359,
+        "gtnhlanth.recipe.digester": 40,
+        "gtnhlanth.recipe.disstank": 33,
+        "gtnhlanth.recipe.sc": 7,
+        "gtnhlanth.recipe.tc": 112,
+        "ic.recipe.recycler": 0,
+        "kubatech.defusioncrafter": 17,
+        "kubatech.htgrrecipes": 9
+      },
+      "recipe_count": 187204,
+      "java": "25.0.4.1",
+      "furnace": {
+        "input": "minecraft:potato:32767x1[null]; ",
+        "available_smelting_recipes": 9683,
+        "fuel_ticks": 1600,
+        "cook_progress": 0,
+        "ticks": 20,
+        "completed": true,
+        "output": "minecraft:baked_potato:0x1[null]; "
+      },
+      "primitiveMachines": [
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 1,
+          "enabled": true,
+          "mode": "normal",
+          "native_recipe_duration": 7200,
+          "effective_duration": 7200,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            7200,
+            7200,
+            7200
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "normal",
+          "native_recipe_duration": 7200,
+          "effective_duration": 7200,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            1440,
+            1440,
+            1440
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 10,
+          "enabled": true,
+          "mode": "normal",
+          "native_recipe_duration": 7200,
+          "effective_duration": 7200,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            720,
+            720,
+            720
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": false,
+          "mode": "disabled",
+          "native_recipe_duration": 7200,
+          "effective_duration": 7200,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            7200,
+            7200,
+            7200
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "broken",
+          "native_recipe_duration": 7200,
+          "effective_duration": 7200,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            10
+          ],
+          "outputs_after_batches": [
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "blocked",
+          "native_recipe_duration": 7200,
+          "effective_duration": 0,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": false,
+          "ticks_per_batch": [],
+          "outputs_after_batches": [],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "missing-input",
+          "native_recipe_duration": 7200,
+          "effective_duration": 0,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": false,
+          "ticks_per_batch": [],
+          "outputs_after_batches": [],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "in-progress",
+          "native_recipe_duration": 7200,
+          "effective_duration": 7200,
+          "initial_progress": 123,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            1416,
+            1416,
+            1416
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "short",
+          "native_recipe_duration": 7200,
+          "effective_duration": 1,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            1,
+            1,
+            1
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "fractional",
+          "native_recipe_duration": 7200,
+          "effective_duration": 198,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            40,
+            40,
+            40
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTEBrickedBlastFurnace",
+          "map": "gt.recipe.primitiveblastfurnace",
+          "speed": 5,
+          "enabled": true,
+          "mode": "blacklist",
+          "native_recipe_duration": 7200,
+          "effective_duration": 7200,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:iron_ingot:0x1[null]; null;minecraft:coal:0x4[null]; ",
+          "recipe_outputs": "gregtech:gt.metaitem.01:11305x1[null]; null;gregtech:gt.metaitem.01:2816x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            7200,
+            7200,
+            7200
+          ],
+          "outputs_after_batches": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              3,
+              0,
+              3
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 1,
+          "enabled": true,
+          "mode": "normal",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1800,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            1800,
+            1800,
+            1800
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "normal",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1800,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            360,
+            360,
+            360
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 10,
+          "enabled": true,
+          "mode": "normal",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1800,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            180,
+            180,
+            180
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": false,
+          "mode": "disabled",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1800,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            1800,
+            1800,
+            1800
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "broken",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1800,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            10
+          ],
+          "outputs_after_batches": [
+            [
+              0
+            ]
+          ],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "blocked",
+          "native_recipe_duration": 1800,
+          "effective_duration": 0,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": false,
+          "ticks_per_batch": [],
+          "outputs_after_batches": [],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "missing-input",
+          "native_recipe_duration": 1800,
+          "effective_duration": 0,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": false,
+          "ticks_per_batch": [],
+          "outputs_after_batches": [],
+          "fluid_after_batches": [],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "in-progress",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1800,
+          "initial_progress": 123,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            336,
+            336,
+            336
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "short",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            1,
+            1,
+            1
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "fractional",
+          "native_recipe_duration": 1800,
+          "effective_duration": 198,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            40,
+            40,
+            40
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        },
+        {
+          "class": "gregtech.common.tileentities.machines.multi.MTECokeOven",
+          "map": "gt.recipe.cokeoven",
+          "speed": 5,
+          "enabled": true,
+          "mode": "blacklist",
+          "native_recipe_duration": 1800,
+          "effective_duration": 1800,
+          "initial_progress": 0,
+          "recipe_inputs": "minecraft:coal:0x1[null]; ",
+          "recipe_outputs": "Railcraft:fuel.coke:0x1[null]; ",
+          "accepted": true,
+          "ticks_per_batch": [
+            1800,
+            1800,
+            1800
+          ],
+          "outputs_after_batches": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "fluid_after_batches": [
+            500,
+            1000,
+            1500
+          ],
+          "energy_spent": 0
+        }
+      ],
+      "nativeMachines": [
+        {
+          "name": "LV macerator",
+          "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+          "duration": 200,
+          "speed": 1,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            200,
+            200,
+            200
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 1200,
+          "final_progress": 0
+        },
+        {
+          "name": "LV macerator",
+          "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+          "duration": 200,
+          "speed": 5,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            40,
+            40,
+            40
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 240,
+          "final_progress": 0
+        },
+        {
+          "name": "LV macerator",
+          "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            20,
+            20,
+            20
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 120,
+          "final_progress": 0
+        },
+        {
+          "name": "LV short recipe",
+          "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+          "duration": 1,
+          "speed": 10,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            1,
+            1,
+            1
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 6,
+          "final_progress": 0
+        },
+        {
+          "name": "LV fractional tick boundary",
+          "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+          "duration": 198,
+          "speed": 10,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            20,
+            20,
+            20
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 120,
+          "final_progress": 0
+        },
+        {
+          "name": "LV disabled",
+          "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+          "duration": 200,
+          "speed": 10,
+          "enabled": false,
+          "powered": true,
+          "ticks_per_batch": [
+            200,
+            200,
+            200
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 1200,
+          "final_progress": 0
+        },
+        {
+          "name": "LV power failure",
+          "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": false,
+          "ticks_per_batch": [
+            1
+          ],
+          "outputs_after_batches": [
+            0
+          ],
+          "energy_spent": 0,
+          "final_progress": -100
+        },
+        {
+          "name": "industrialcentrifuge",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialCentrifugeLegacy",
+          "duration": 200,
+          "speed": 1,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            200,
+            200,
+            200
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 1200,
+          "final_progress": 0
+        },
+        {
+          "name": "industrialcentrifuge",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialCentrifugeLegacy",
+          "duration": 200,
+          "speed": 5,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            40,
+            40,
+            40
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 240,
+          "final_progress": 0
+        },
+        {
+          "name": "industrialcentrifuge",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialCentrifugeLegacy",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            20,
+            20,
+            20
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 120,
+          "final_progress": 0
+        },
+        {
+          "name": "industrialcentrifuge power failure",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.MTEIndustrialCentrifugeLegacy",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": false,
+          "ticks_per_batch": [
+            1
+          ],
+          "outputs_after_batches": [
+            0
+          ],
+          "energy_spent": 0,
+          "final_progress": 0
+        },
+        {
+          "name": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+          "duration": 200,
+          "speed": 1,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            200,
+            200,
+            200
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 1200,
+          "final_progress": 0
+        },
+        {
+          "name": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+          "duration": 200,
+          "speed": 5,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            40,
+            40,
+            40
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 240,
+          "final_progress": 0
+        },
+        {
+          "name": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            20,
+            20,
+            20
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 120,
+          "final_progress": 0
+        },
+        {
+          "name": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge power failure",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialCentrifuge",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": false,
+          "ticks_per_batch": [
+            1
+          ],
+          "outputs_after_batches": [
+            0
+          ],
+          "energy_spent": 0,
+          "final_progress": 0
+        },
+        {
+          "name": "alloyblastsmelter",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEAlloyBlastSmelter",
+          "duration": 200,
+          "speed": 1,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            200,
+            200,
+            200
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 1200,
+          "final_progress": 0
+        },
+        {
+          "name": "alloyblastsmelter",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEAlloyBlastSmelter",
+          "duration": 200,
+          "speed": 5,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            40,
+            40,
+            40
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 240,
+          "final_progress": 0
+        },
+        {
+          "name": "alloyblastsmelter",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEAlloyBlastSmelter",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            20,
+            20,
+            20
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 120,
+          "final_progress": 0
+        },
+        {
+          "name": "alloyblastsmelter power failure",
+          "class": "gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.MTEAlloyBlastSmelter",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": false,
+          "ticks_per_batch": [
+            1
+          ],
+          "outputs_after_batches": [
+            0
+          ],
+          "energy_spent": 0,
+          "final_progress": 0
+        },
+        {
+          "name": "industrialchisel",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialChisel",
+          "duration": 200,
+          "speed": 1,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            200,
+            200,
+            200
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 1200,
+          "final_progress": 0
+        },
+        {
+          "name": "industrialchisel",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialChisel",
+          "duration": 200,
+          "speed": 5,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            40,
+            40,
+            40
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 240,
+          "final_progress": 0
+        },
+        {
+          "name": "industrialchisel",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialChisel",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": true,
+          "ticks_per_batch": [
+            20,
+            20,
+            20
+          ],
+          "outputs_after_batches": [
+            1,
+            2,
+            3
+          ],
+          "energy_spent": 120,
+          "final_progress": 0
+        },
+        {
+          "name": "industrialchisel power failure",
+          "class": "gregtech.common.tileentities.machines.multi.MTEIndustrialChisel",
+          "duration": 200,
+          "speed": 10,
+          "enabled": true,
+          "powered": false,
+          "ticks_per_batch": [
+            1
+          ],
+          "outputs_after_batches": [
+            0
+          ],
+          "energy_spent": 0,
+          "final_progress": 0
+        }
+      ],
+      "researchStation": [
+        {
+          "speed": 1,
+          "computation": 500,
+          "native_step": 10,
+          "powered_work_ticks": 50,
+          "remaining": 0,
+          "energy_spent": 100
+        },
+        {
+          "speed": 5,
+          "computation": 500,
+          "native_step": 10,
+          "powered_work_ticks": 10,
+          "remaining": 0,
+          "energy_spent": 20
+        },
+        {
+          "speed": 10,
+          "computation": 500,
+          "native_step": 10,
+          "powered_work_ticks": 5,
+          "remaining": 0,
+          "energy_spent": 10
+        },
+        {
+          "speed": 1000,
+          "computation": 500,
+          "native_step": 10,
+          "powered_work_ticks": 1,
+          "remaining": 0,
+          "energy_spent": 2
+        }
+      ],
+      "diskReload": {
+        "name": "disk reload 3x",
+        "class": "gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe",
+        "duration": 200,
+        "speed": 3,
+        "enabled": true,
+        "powered": true,
+        "ticks_per_batch": [
+          67,
+          67,
+          67
+        ],
+        "outputs_after_batches": [
+          1,
+          2,
+          3
+        ],
+        "energy_spent": 402,
+        "final_progress": 0
+      },
+      "status": "passed"
+    }
+  },
+  "limits": [
+    "Dedicated isolated Java 25 pack; no live server was changed.",
+    "Oil drill tests stage native productive loops, not physical assembly or complete underground depletion.",
+    "GL/Windows client performance is outside this server-only mod."
+  ]
+}
